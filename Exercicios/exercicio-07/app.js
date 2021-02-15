@@ -5,7 +5,7 @@
   - O resultado exibido no console deve ser: false true.
 */
 
-console.log(true, false)
+// console.log(!true, !false)
 
 /*
   02
@@ -16,7 +16,15 @@ console.log(true, false)
   - Se existir, exiba no console a mensagem "Existe um leão no array animals.".
 */
 
-const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
+const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo'];
+const naoExisteItemLeao = !animals.includes("leão");
+
+// if(naoExisteItemLeao) {
+//   console.log('Leão não existe no array animals');
+// }
+// else {
+//   console.log('Existe um leão no array animals');
+// }
 
 /*
   03
@@ -29,7 +37,24 @@ const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
   "A soma ultrapassou 400. Até aqui, o valor atual é RESULTADO_DA_SOMA."
 */
 
-const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
+const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
+// let somRandomNumbers = 0;
+
+// for(let i = 0; i < randomNumbers.length; i++) {
+
+//   console.log(somRandomNumbers);
+//   somRandomNumbers += randomNumbers[i];
+//   somMaiorQue400 = somRandomNumbers > 400;
+
+//   if (somMaiorQue400) {
+//     console.log(
+//       `A soma ultrapassou 400. Até aqui, o valor atual é ${somRandomNumbers}`
+//     );
+//     break;
+//   }
+
+// }
+
 
 /*
   04
@@ -41,6 +66,18 @@ const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
 */
 
 const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sabedoria.']
+let frase = '';
+
+for(let i = 0; i < sentence.length; i++) {
+  const palavraAtual = sentence[i];
+
+  if(palavraAtual === 'certeza')
+    continue
+
+  frase += ' ' + palavraAtual;
+}
+
+// console.log(frase);
 
 /*
   05
@@ -58,6 +95,38 @@ const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sab
 */
 
 const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null]
+
+// let somIteracoesNoArray = 0;
+// let somBooleansIterados = 0;
+// let somStringsIterados = 0;
+// let stringIteradas = '';
+
+// for(let i = 0; i < randomValues.length; i++) {
+
+//   somIteracoesNoArray++;
+//   const valorAtual = randomValues[i];
+//   const typeofDoValorAtual = typeof valorAtual;
+
+//   const typeofIgualAString = typeofDoValorAtual === 'string';
+//   const typeofIgualABoolean = typeofDoValorAtual === 'boolean';
+
+//   if(typeofIgualAString) {
+//     somStringsIterados++;
+//     stringIteradas += valorAtual + ", ";
+
+//     if(somStringsIterados === 4) break
+//   }
+//   else if (typeofIgualABoolean) {
+//     somBooleansIterados++;
+//   } 
+
+// }
+
+// const stringFormatada = stringIteradas.replace(', Git,', ' e Git;');
+
+// console.log(`As primeiras 4 strings são: ${stringFormatada}`);
+// console.log(`Até que as primeiras 4 strings fossem iteradas, ${somBooleansIterados} booleans foram iterados;`);
+// console.log(`O array foi iterado por ${somIteracoesNoArray} vezes.`);
 
 /*
   06
@@ -79,7 +148,25 @@ const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS',
     da bebida além da que você escolheu.
 */
 
-// const drinkType
+const drinkType = 'suco';
+
+let mensagem = '';
+
+switch(drinkType) {
+  case 'água':
+    mensagem = 'Substância química cujas moléculas são formadas por dois átomos de hidrogênio e um de oxigênio.'
+    break
+  case 'refrigerante':
+    mensagem = 'Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar.'
+    break
+  case 'suco':
+    mensagem = 'Bebida produzida do líquido extraído de frutos.';
+    break
+  default:
+    mensagem = 'Bebida desconhecida';
+}
+
+// console.log(mensagem);
 
 /*
   07
@@ -89,7 +176,7 @@ const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS',
     para testar o switch que você escreveu.
 */
 
-const a = 2
+const a = 2;
 
 // if (a === 0) {
 //   console.log(`O valor de "a" é ${a}`)
@@ -98,3 +185,15 @@ const a = 2
 // } else {
 //   console.log('O valor de "a" é qualquer número, exceto 0 e 1')
 // }
+
+switch(a) {
+  case 0:
+    console.log(`O valor de "a" é ${a}`);
+    break
+  case 1:
+    console.log(`O valor de "a" é ${a}`);
+    break
+  default:
+    console.log('O valor de "a" é qualquer número, exceto 0 e 1');
+    break
+}
