@@ -37,16 +37,18 @@ const naoExisteItemLeao = !animals.includes("leão");
   "A soma ultrapassou 400. Até aqui, o valor atual é RESULTADO_DA_SOMA."
 */
 
-const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
+// const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
 // let somRandomNumbers = 0;
+// const numLimit = 400;
 
 // for(let i = 0; i < randomNumbers.length; i++) {
 
 //   console.log(somRandomNumbers);
 //   somRandomNumbers += randomNumbers[i];
-//   somMaiorQue400 = somRandomNumbers > 400;
+  
+//   somMaiorQueLimit = somRandomNumbers > numLimit;
 
-//   if (somMaiorQue400) {
+//   if (somMaiorQueLimit) {
 //     console.log(
 //       `A soma ultrapassou 400. Até aqui, o valor atual é ${somRandomNumbers}`
 //     );
@@ -96,33 +98,33 @@ for(let i = 0; i < sentence.length; i++) {
 
 const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null]
 
-// let somIteracoesNoArray = 0;
-// let somBooleansIterados = 0;
-// let somStringsIterados = 0;
-// let stringIteradas = '';
+let somIteracoesNoArray = 0;
+let somBooleansIterados = 0;
+let somStringsIterados = 0;
+let stringIteradas = '';
 
-// for(let i = 0; i < randomValues.length; i++) {
+for(let i = 0; i < randomValues.length; i++) {
 
-//   somIteracoesNoArray++;
-//   const valorAtual = randomValues[i];
-//   const typeofDoValorAtual = typeof valorAtual;
+  somIteracoesNoArray++;
+  const valorAtual = randomValues[i];
+  const typeofDoValorAtual = typeof valorAtual;
 
-//   const typeofIgualAString = typeofDoValorAtual === 'string';
-//   const typeofIgualABoolean = typeofDoValorAtual === 'boolean';
+  const typeofIgualAString = typeofDoValorAtual === 'string';
+  const typeofIgualABoolean = typeofDoValorAtual === 'boolean';
 
-//   if(typeofIgualAString) {
-//     somStringsIterados++;
-//     stringIteradas += valorAtual + ", ";
+  if(typeofIgualAString) {
+    somStringsIterados++;
+    stringIteradas += valorAtual + ", ";
 
-//     if(somStringsIterados === 4) break
-//   }
-//   else if (typeofIgualABoolean) {
-//     somBooleansIterados++;
-//   } 
+    if(somStringsIterados === 4) break
+  }
+  else if (typeofIgualABoolean) {
+    somBooleansIterados++;
+  } 
 
-// }
+}
 
-// const stringFormatada = stringIteradas.replace(', Git,', ' e Git;');
+const stringFormatada = stringIteradas.replace(', Git,', ' e Git;');
 
 // console.log(`As primeiras 4 strings são: ${stringFormatada}`);
 // console.log(`Até que as primeiras 4 strings fossem iteradas, ${somBooleansIterados} booleans foram iterados;`);
@@ -176,7 +178,7 @@ switch(drinkType) {
     para testar o switch que você escreveu.
 */
 
-const a = 2;
+const number = 1;
 
 // if (a === 0) {
 //   console.log(`O valor de "a" é ${a}`)
@@ -186,14 +188,14 @@ const a = 2;
 //   console.log('O valor de "a" é qualquer número, exceto 0 e 1')
 // }
 
-switch(a) {
+switch(number) {
   case 0:
-    console.log(`O valor de "a" é ${a}`);
+    console.log(`O valor de number é ${number}`);
     break
   case 1:
-    console.log(`O valor de "a" é ${a}`);
+    console.log(`O valor de number é ${number}`);
     break
   default:
-    console.log('O valor de "a" é qualquer número, exceto 0 e 1');
+    console.log(`O valor de number é qualquer número, exceto 0 e 1`);
     break
 }
