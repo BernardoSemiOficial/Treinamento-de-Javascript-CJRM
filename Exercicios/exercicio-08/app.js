@@ -7,6 +7,14 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
+function multiplica(num1 = 1, num2 = 1) {
+  return num1 * num2;
+}
+
+// const resultado = multiplica(2, 9);
+
+// console.log(resultado);
+
 /*
   02
 
@@ -14,6 +22,14 @@
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
+
+const dividi = function (num1 = 1, num2 = 1) {
+  return num1 / num2;
+}
+
+// const resultado = dividi(1, 3);
+
+// console.log(resultado);
 
 /*
   03
@@ -28,6 +44,14 @@
   "Esta é a Xª vez que essa string é exibida."
 */
 
+// function mensagem(texto = 'Digite um texto') {
+//   console.log(texto);
+// }
+
+// for(let i = 1; i <= 7; i++) {
+//   mensagem(`Esta é a ${i}ª vez que essa string é exibida.`);
+// }
+
 /*
   04
 
@@ -39,7 +63,25 @@
     função.
 */
 
-const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+// const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail'];
+
+// function criarArrayComPalavrasEmMaiusculo () {
+
+//   const millennialWordsUpperCase = [];
+  
+//   for(let i = 0; i < millennialWords.length; i++) {
+//     const wordUpperCase = millennialWords[i].toUpperCase();
+//     millennialWordsUpperCase.push(wordUpperCase);
+//   }
+
+//   return millennialWordsUpperCase;
+// }
+
+// const result = criarArrayComPalavrasEmMaiusculo();
+
+// console.log(result);
+
+
 
 /*
   05
@@ -52,7 +94,36 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
   "O array "randomNumbers" possui XX números, sendo XX positivos e XX negativos."
 */
 
-const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
+const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3];
+
+function ePositivo(number) {
+  if(number >= 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
+let quantNumeros = null;
+let quantNumPositivos = null;
+let quantNumNegativos = null;
+
+for(let i = 0; i < randomNumbers.length; i++) {
+
+  const valorAtual = randomNumbers[i];
+
+  if(ePositivo(valorAtual)) {
+    quantNumPositivos++;
+  } else {
+    quantNumNegativos++
+  }
+
+  quantNumeros++;
+}
+
+// console.log(`O array "randomNumbers" possui ${quantNumeros} números, sendo ${quantNumPositivos} positivos e ${quantNumNegativos} negativos.`);
+
+
 
 /*
   06
@@ -64,7 +135,24 @@ const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
     função.
 */
 
-// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+function getOddNumbers(array) {
+
+  const arrayNumberOdd = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const item = array[i];
+
+    if(item % 2 !== 0) {
+      arrayNumberOdd.push(item);
+    }
+  }
+
+  return arrayNumberOdd;
+}
+
+const arrayNumberOdd = getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42]);
+
+// console.log(arrayNumberOdd);
 
 /*
   07
@@ -102,3 +190,14 @@ const functions = [
   function () { return 'Índias' },
   function () { return 'Ocidentais.' }
 ]
+
+// const mensagem = [];
+
+// for(let i = 0; i < functions.length; i++) {
+//   const functionMensagem = functions[i]();
+//   mensagem.push(functionMensagem)
+// }
+
+// const espacoPalavras = mensagem.join(" ");
+
+// console.log(espacoPalavras);
