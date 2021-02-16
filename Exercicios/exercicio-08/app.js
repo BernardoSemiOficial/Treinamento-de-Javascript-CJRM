@@ -7,8 +7,8 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
-function multiplica(num1 = 1, num2 = 1) {
-  return num1 * num2;
+function multiplica(primeiroNumero = 0, segundoNumero = 0) {
+  return primeiroNumero * segundoNumero;
 }
 
 // const resultado = multiplica(2, 9);
@@ -23,8 +23,8 @@ function multiplica(num1 = 1, num2 = 1) {
     2 números.
 */
 
-const dividi = function (num1 = 1, num2 = 1) {
-  return num1 / num2;
+const dividi = function (primeiroNumero = 0, segundoNumero = 0) {
+  return primeiroNumero / segundoNumero;
 }
 
 // const resultado = dividi(1, 3);
@@ -63,21 +63,21 @@ const dividi = function (num1 = 1, num2 = 1) {
     função.
 */
 
-// const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail'];
+const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail'];
 
-// function criarArrayComPalavrasEmMaiusculo () {
+// function criarArrayComPalavrasEmMaiusculo (array = []) {
 
 //   const millennialWordsUpperCase = [];
   
-//   for(let i = 0; i < millennialWords.length; i++) {
-//     const wordUpperCase = millennialWords[i].toUpperCase();
+//   for(let i = 0; i < array.length; i++) {
+//     const wordUpperCase = array[i].toUpperCase();
 //     millennialWordsUpperCase.push(wordUpperCase);
 //   }
 
 //   return millennialWordsUpperCase;
 // }
 
-// const result = criarArrayComPalavrasEmMaiusculo();
+// const result = criarArrayComPalavrasEmMaiusculo(millennialWords);
 
 // console.log(result);
 
@@ -97,11 +97,7 @@ const dividi = function (num1 = 1, num2 = 1) {
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3];
 
 function ePositivo(number) {
-  if(number >= 0) {
-    return true
-  } else {
-    return false
-  }
+  return number >= 1;
 }
 
 let quantNumeros = null;
@@ -135,14 +131,15 @@ for(let i = 0; i < randomNumbers.length; i++) {
     função.
 */
 
-function getOddNumbers(array) {
+function getOddNumbers(array = []) {
 
   const arrayNumberOdd = [];
 
   for (let i = 0; i < array.length; i++) {
     const item = array[i];
+    const eItemOdd = item % 2 !== 0;
 
-    if(item % 2 !== 0) {
+    if(eItemOdd) {
       arrayNumberOdd.push(item);
     }
   }
@@ -191,13 +188,13 @@ const functions = [
   function () { return 'Ocidentais.' }
 ]
 
-// const mensagem = [];
+const mensagem = [];
 
-// for(let i = 0; i < functions.length; i++) {
-//   const functionMensagem = functions[i]();
-//   mensagem.push(functionMensagem)
-// }
+for(let i = 0; i < functions.length; i++) {
+  const functionMensagem = functions[i]();
+  mensagem.push(functionMensagem)
+}
 
-// const espacoPalavras = mensagem.join(" ");
+const espacoPalavras = mensagem.join(" ");
 
-// console.log(espacoPalavras);
+console.log(espacoPalavras);
