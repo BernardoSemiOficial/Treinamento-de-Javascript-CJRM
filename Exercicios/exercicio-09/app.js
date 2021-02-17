@@ -13,9 +13,17 @@
     valor no console.
 */
 
-function convertToString (value) {
+// function convertToString (value) {
+//   return String(value)
+// }
+
+const convertToString = value => {
   return String(value)
 }
+
+// const result = convertToString(1200);
+
+// console.log(result);
 
 /*
   02
@@ -23,6 +31,14 @@ function convertToString (value) {
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
+
+const lengthDeUmaString = string => {
+  return string.length
+}
+
+// const result = lengthDeUmaString('Bernardo');
+
+// console.log(result);
 
 /*
   03
@@ -34,12 +50,30 @@ function convertToString (value) {
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
+const transformPalavrasEmLowerCase = string => {
+  return string.toLowerCase();
+}
+
+// const result = transformPalavrasEmLowerCase(
+//   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
+// );
+
+// console.log(result);
+
 /*
   04
 
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
+
+const indexCaractere = (caractere, string) => {
+  return string.indexOf(caractere);
+}
+
+// const posCaractereNaString = indexCaractere('d', 'Bernardo');
+
+// console.log(posCaractereNaString);
 
 /*
   05
@@ -48,12 +82,28 @@ function convertToString (value) {
     passado por argumento existe no array (também passado por argumento).
 */
 
+const inclusoNoArray = (item, array) => {
+  return array.includes(item)
+}
+
+// const itemIncluso = inclusoNoArray('Bruno', ['Bruno', 'Renata', 'Bernardo']);
+
+// console.log(itemIncluso);
+
 /*
   06
 
   - Crie uma função que retorna a concatenação de 2 arrays, passados como  
     argumentos em sua invocação;
 */
+
+const concatenarArray = (primeiroArray, segundoArray) => {
+  return primeiroArray.concat(segundoArray);
+}
+
+// const concatenacaoDeArray = concatenarArray([1, 3, 4], [4, 10, 5])
+
+// console.log(concatenacaoDeArray);
 
 /*
   07
@@ -62,12 +112,29 @@ function convertToString (value) {
     mas com o último item removido.
 */
 
+const removeLastItemArray = array => {
+  array.pop();
+  return array
+}
+
+// const itemRemovido = removeLastItemArray([1, 4, 10, 9, 10, 2]);
+
+// console.log(itemRemovido);
+
 /*
   08
 
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+const eNull = valor => {
+  return valor === null
+}
+
+// const result = eNull(1);
+
+// console.log(result);
 
 /*
   09
@@ -80,6 +147,17 @@ function convertToString (value) {
     foi exibido.
 */
 
+const myName = callback => {
+  const name = 'Bernardo Pereira';
+  callback(name)
+}
+
+const log = string => {
+  console.log(string);
+}
+
+// myName(log);
+
 /*
   10
 
@@ -91,6 +169,21 @@ function convertToString (value) {
     resulte no triplo de 33.
 */
 
+const myAge = callback => {
+  const age = 33
+  const result = callback(age);
+
+  return result
+}
+
+const triploNumero = numero => {
+  return numero * 3
+}
+
+// const result = myAge(triploNumero);
+
+// console.log(result);
+
 /*
   11
 
@@ -100,7 +193,14 @@ function convertToString (value) {
   "O Xº item do array [X, X, X] é X."
 */
 
-const numbers = [1, 2, 3]
+const numbers = [1, 2, 3];
+
+// const primeiroItemArray = (item, id, arrayIterado) => {
+//   const itemId = id + 1;
+//   console.log(`O ${itemId}º item do array [${arrayIterado}] é ${item}.`);
+// }
+
+// numbers.forEach(primeiroItemArray);
 
 /*
   12
@@ -113,9 +213,15 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+// for (let i = 0; i < letters.length; i++) {
+//   lettersCopy.push(letters[i])
+// }
+
+const adicionarNoArray = item => lettersCopy.push(item);
+
+letters.forEach(adicionarNoArray)
+
+// console.log(lettersCopy);
 
 /*
   13
@@ -146,7 +252,13 @@ const review = [
 
 let paragraphs = ''
 
-section.innerHTML = paragraphs
+const templateHTMl = (item) => {
+  paragraphs += `<p>${item}</p>`
+};
+
+// review.forEach(templateHTMl)
+
+// section.innerHTML = paragraphs
 
 /*
   14
@@ -168,3 +280,35 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+const quantidadePessoasQueCurtiram = array => {
+
+  let pessoasQueCurtiram = array.length;
+
+  if(pessoasQueCurtiram >= 4) pessoasQueCurtiram = 4;
+
+  switch(pessoasQueCurtiram) {
+    case 0:
+      return "Ninguém curtiu isso =(";
+    case 1:
+      return `${array[0]} curtiu isso`;
+    case 2:
+      return `${array[0]} e ${array[1]} curtiram isso`;
+    case 3:
+      return `${array[0]}, ${array[1]} e ${array[2]} curtiram isso`;
+    case 4:
+      const restanteDasPessoas = array.length - 2;
+      return `${array[0]}, ${array[1]} e mais ${restanteDasPessoas} pessoas curtiram isso`;
+    default:
+      return `Insira um valor válido como argumento`
+  }
+}
+
+const pessoasQueCurtiram = quantidadePessoasQueCurtiram([
+  "Ana",
+  "Julia",
+  "Bernardo",
+]);
+
+console.log(pessoasQueCurtiram);
+
