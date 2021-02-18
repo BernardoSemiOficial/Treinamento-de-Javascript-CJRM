@@ -17,9 +17,7 @@
 //   return String(value)
 // }
 
-const convertToString = value => {
-  return String(value)
-}
+const convertToString = value => String(value)
 
 // const result = convertToString(1200);
 
@@ -32,9 +30,7 @@ const convertToString = value => {
     recebida por parâmetro possui.
 */
 
-const lengthDeUmaString = string => {
-  return string.length
-}
+const lengthDeUmaString = string => string.length
 
 // const result = lengthDeUmaString('Bernardo');
 
@@ -50,9 +46,7 @@ const lengthDeUmaString = string => {
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
-const transformPalavrasEmLowerCase = string => {
-  return string.toLowerCase();
-}
+const transformPalavrasEmLowerCase = string => string.toLowerCase();
 
 // const result = transformPalavrasEmLowerCase(
 //   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
@@ -67,9 +61,7 @@ const transformPalavrasEmLowerCase = string => {
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
 
-const indexCaractere = (caractere, string) => {
-  return string.indexOf(caractere);
-}
+const indexCaractere = (caractere, string) => string.indexOf(caractere);
 
 // const posCaractereNaString = indexCaractere('d', 'Bernardo');
 
@@ -82,9 +74,7 @@ const indexCaractere = (caractere, string) => {
     passado por argumento existe no array (também passado por argumento).
 */
 
-const inclusoNoArray = (item, array) => {
-  return array.includes(item)
-}
+const inclusoNoArray = (item, array) => array.includes(item);
 
 // const itemIncluso = inclusoNoArray('Bruno', ['Bruno', 'Renata', 'Bernardo']);
 
@@ -97,9 +87,8 @@ const inclusoNoArray = (item, array) => {
     argumentos em sua invocação;
 */
 
-const concatenarArray = (primeiroArray, segundoArray) => {
-  return primeiroArray.concat(segundoArray);
-}
+const concatenarArray = (primeiroArray, segundoArray) => 
+  primeiroArray.concat(segundoArray);
 
 // const concatenacaoDeArray = concatenarArray([1, 3, 4], [4, 10, 5])
 
@@ -128,9 +117,7 @@ const removeLastItemArray = array => {
     invocação é null.
 */
 
-const eNull = valor => {
-  return valor === null
-}
+const eNull = valor => valor === null;
 
 // const result = eNull(1);
 
@@ -147,13 +134,10 @@ const eNull = valor => {
     foi exibido.
 */
 
-const myName = callback => {
-  const name = 'Bernardo Pereira';
-  callback(name)
-}
+const myName = callback => callback()
 
-const log = string => {
-  console.log(string);
+const log = () => {
+  console.log("Bernardo Pereira");
 }
 
 // myName(log);
@@ -169,18 +153,13 @@ const log = string => {
     resulte no triplo de 33.
 */
 
-const myAge = callback => {
-  const age = 33
-  const result = callback(age);
-
-  return result
-}
+const myAge = (age, callback) => callback(age);
 
 const triploNumero = numero => {
   return numero * 3
 }
 
-// const result = myAge(triploNumero);
+// const result = myAge(33, triploNumero);
 
 // console.log(result);
 
@@ -195,12 +174,13 @@ const triploNumero = numero => {
 
 const numbers = [1, 2, 3];
 
-// const primeiroItemArray = (item, id, arrayIterado) => {
+// const itensArray = (item, id, arrayIterado) => {
 //   const itemId = id + 1;
-//   console.log(`O ${itemId}º item do array [${arrayIterado}] é ${item}.`);
+//   const itens = arrayIterado.join(', ');
+//   console.log(`O ${itemId}º item do array [${itens}] é ${item}.`);
 // }
 
-// numbers.forEach(primeiroItemArray);
+// numbers.forEach(itensArray);
 
 /*
   12
@@ -217,9 +197,9 @@ let lettersCopy = []
 //   lettersCopy.push(letters[i])
 // }
 
-const adicionarNoArray = item => lettersCopy.push(item);
+const adicionarNoArrayLetters = item => lettersCopy.push(item);
 
-letters.forEach(adicionarNoArray)
+letters.forEach(adicionarNoArrayLetters)
 
 // console.log(lettersCopy);
 
@@ -252,13 +232,11 @@ const review = [
 
 let paragraphs = ''
 
-const templateHTMl = (item) => {
-  paragraphs += `<p>${item}</p>`
-};
+const criarTemplateHTMl = paragraph => paragraphs += `<p>${paragraph}</p>`
 
-// review.forEach(templateHTMl)
+review.forEach(criarTemplateHTMl)
 
-// section.innerHTML = paragraphs
+section.innerHTML = paragraphs
 
 /*
   14
@@ -281,24 +259,27 @@ const templateHTMl = (item) => {
     pessoas já mencionadas no início da mensagem).
 */
 
-const quantidadePessoasQueCurtiram = array => {
+const quantidadePessoasQueCurtiram = (array = []) => {
 
   let pessoasQueCurtiram = array.length;
+  const primeiraPessoa = array[0];
+  const segundaPessoa = array[1];
+  const terceiraPessoa = array[2];
+  const totalDePessoasMenos2 = array.length - 2;
 
   if(pessoasQueCurtiram >= 4) pessoasQueCurtiram = 4;
 
   switch(pessoasQueCurtiram) {
     case 0:
-      return "Ninguém curtiu isso =(";
+      return `Ninguém curtiu isso =(`;
     case 1:
-      return `${array[0]} curtiu isso`;
+      return `${primeiraPessoa} curtiu isso`;
     case 2:
-      return `${array[0]} e ${array[1]} curtiram isso`;
+      return `${primeiraPessoa} e ${segundaPessoa} curtiram isso`;
     case 3:
-      return `${array[0]}, ${array[1]} e ${array[2]} curtiram isso`;
+      return `${primeiraPessoa}, ${segundaPessoa} e ${terceiraPessoa} curtiram isso`;
     case 4:
-      const restanteDasPessoas = array.length - 2;
-      return `${array[0]}, ${array[1]} e mais ${restanteDasPessoas} pessoas curtiram isso`;
+      return `${primeiraPessoa}, ${segundaPessoa} e mais ${totalDePessoasMenos2} pessoas curtiram isso`;
     default:
       return `Insira um valor válido como argumento`
   }
