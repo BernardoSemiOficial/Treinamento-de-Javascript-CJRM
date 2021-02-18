@@ -267,7 +267,9 @@ const quantidadePessoasQueCurtiram = (array = []) => {
   const terceiraPessoa = array[2];
   const totalDePessoasMenos2 = array.length - 2;
 
-  if(pessoasQueCurtiram >= 4) pessoasQueCurtiram = 4;
+  if(pessoasQueCurtiram >= 4) {
+    pessoasQueCurtiram = 4;
+  } 
 
   switch(pessoasQueCurtiram) {
     case 0:
@@ -292,4 +294,3 @@ const pessoasQueCurtiram = quantidadePessoasQueCurtiram([
 ]);
 
 console.log(pessoasQueCurtiram);
-
