@@ -14,11 +14,7 @@ const getCatInfo = () => {
   const color = 'Cinza'
 
   // [name, age, color]
-  return {
-    name,
-    age,
-    color
-  }
+  return { name, age, color }
 }
 
 const infos = getCatInfo();
@@ -94,6 +90,7 @@ const dogs = [
   { name: 'Zé', age: 2, gender: 'Male', breed: 'Pug' },
   { name: 'Jade', age: 4, gender: 'Female', breed: 'Shiba inu' },
   { name: 'Zequinha', age: 7, gender: 'Male', breed: 'Poodle' },
+  { name: 'Zequinha', age: 10, gender: 'Male', breed: 'Poodle' },
   { name: 'Xica', age: 6, gender: 'Female', breed: 'Chihuahua' }
 ]
 
@@ -101,7 +98,7 @@ const searchZequinha = item => item.name === 'Zequinha';
 
 const dogZequinha = dogs.find(searchZequinha)
 
-// console.log(dogZequinha);
+console.log(dogZequinha);
 
 /*
   06
@@ -135,6 +132,11 @@ const dogZequinha = dogs.find(searchZequinha)
   </section>
 */
 
+const mainTitle = document.querySelector('.main-title');
+
+console.log(mainTitle);
+
+
 /*
   07
 
@@ -142,3 +144,7 @@ const dogZequinha = dogs.find(searchZequinha)
     página, através da classe deles;
   - Exiba esse NodeList no console.
 */
+
+const secondaryTitle = document.querySelectorAll('.secondary-title');
+
+console.log(secondaryTitle);
