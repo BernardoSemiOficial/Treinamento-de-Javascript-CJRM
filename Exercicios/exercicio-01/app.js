@@ -25,7 +25,9 @@ Utilize os espaços entre os comentários abaixo para executar os códigos dos
 exercícios. Inclusive o alert mencionado acima.
 */
 
+
 // alert("JS is Awesome!");
+alert('JS is Awesome!');
 
 /*
 04 - Comente o alert que você escreveu acima, utilizando o comentário de uma linha.
@@ -36,19 +38,22 @@ exercícios. Inclusive o alert mencionado acima.
 dígitos. Ex.: 1930.
 */
 
+// const myBirthYear = 2001;
 const myBirthYear = 2001;
 
 /*
 06 - Declare uma const "currentYear", que recebe o ano atual, com 4 dígitos.
 */
 
-const currentYear = 2020;
+// const currentYear = 2020;
+const currentYear = 2021;
 
 /*
 07 - Exiba as const "myBirthYear" e "currentYear", lado a lado, no console do browser.
 */
 
 // console.log(myBirthYear, currentYear);
+console.log(myBirthYear, currentYear);
 
 /*
 08 - Experimente.
@@ -62,12 +67,18 @@ acontece.
 - Exiba a "myAge" no console.
 */
 
+/* 
 const myAge = currentYear - myBirthYear;
 const ten = 10;
 console.log(myAge);
 
 const valor1 = currentYear + ten;
 const valor2 = myAge + ten;
+*/
+
+const myAge = currentYear - myBirthYear;
+console.log(myAge);
+
 
 /*
 09 - Antes do console.log abaixo, declare uma const "ten", que recebe o número  
@@ -83,7 +94,9 @@ Não se assuste com as crases e os cifrões. Conversaremos mais sobre operaçõe
 matemáticas e strings (textos) em breve =)
 */
 
-console.log(`Em ${valor1}, estarei com ${valor2} anos.`)
+const ten = 10;
+console.log(`Em ${currentYear + 10}, estarei com ${myAge + 10} anos.`)
+
 
 /*
 10 - Abra o site abaixo no browser e faça o seguinte:
@@ -99,7 +112,7 @@ da const myBirthYear;
 - Cole as duas linhas de código no console, pressione enter, feche o console e  
 veja o que acontece.
 
-document.querySelector('#birthYear').value = SEU_ANO_DE_NASCIMENTO
+document.querySelector('#birthYear').value = myBirthYear;
 document.querySelector('.formButton').click()
 */
 

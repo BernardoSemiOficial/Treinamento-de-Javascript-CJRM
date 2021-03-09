@@ -19,6 +19,7 @@ Utilize os espaços entre os comentários abaixo para executar os códigos dos e
 */
 
 // console.log('Grandes poderes trazem grandes responsabilidades.');
+// console.log("Grandes poderes trazem grandes responsabilidades.");
 
 /*
 04 - Comente o console.log acima, e:
@@ -34,7 +35,11 @@ const tom = 'Tom';
 const firstTom = 'Hanks';
 const secondTom = 'Cruise';
 
-const myFavoriteTom = tom + ' ' + secondTom;
+// const myFavoriteTom = tom + ' ' + secondTom;
+// console.log(myFavoriteTom);
+
+const myFavoriteTom = tom + " " + secondTom;
+
 // console.log(myFavoriteTom);
 
 /*
@@ -47,7 +52,11 @@ const myFavoriteTom = tom + ' ' + secondTom;
 */
 
 const programmingLanguage = 'JavaScript';
-const js = programmingLanguage.slice(0, 1) + programmingLanguage.slice(4, 5);
+// const js = programmingLanguage.slice(0, 1) + programmingLanguage.slice(4, 5);
+// console.log(js);
+
+const js = programmingLanguage[0] + programmingLanguage[4];
+
 // console.log(js);
 
 /*
@@ -59,7 +68,11 @@ const js = programmingLanguage.slice(0, 1) + programmingLanguage.slice(4, 5);
 */
 
 const mozilla = 'Mozilla Developer Network';
+// const mdn = mozilla[0] + mozilla[8] + mozilla[18];
+// console.log(mdn);
+
 const mdn = mozilla[0] + mozilla[8] + mozilla[18];
+
 // console.log(mdn);
 
 /*
@@ -70,6 +83,8 @@ const mdn = mozilla[0] + mozilla[8] + mozilla[18];
 
 // console.log(programmingLanguage.length);
 
+console.log(programmingLanguage.length);
+
 /*
 08 - Comente o console.log acima, e,
 
@@ -79,8 +94,12 @@ const mdn = mozilla[0] + mozilla[8] + mozilla[18];
 */
 
 let randomWord = 'Araponga';
-const randomWordLength = randomWord.length;
+// const randomWordLength = randomWord.length;
 // console.log(randomWord.slice(randomWordLength - 1, randomWordLength));
+
+const lastIndex = randomWord.length - 1;
+
+// console.log(randomWord[lastIndex]);
 
 /*
 09 - Comente o console.log acima, e,
@@ -91,6 +110,8 @@ const randomWordLength = randomWord.length;
 */
 
 const summerMessage = 'O VERÃO CHEGA NESTE FIM DE SEMANA'
+// console.log(summerMessage.toLowerCase());
+
 // console.log(summerMessage.toLowerCase());
 
 /*
@@ -104,6 +125,8 @@ const summerMessage = 'O VERÃO CHEGA NESTE FIM DE SEMANA'
 const winterMessage = 'o inverno está chegando'
 // console.log(winterMessage.toUpperCase());
 
+console.log(winterMessage.toUpperCase());
+
 /*
 11 - Comente o console.log acima, e,
 
@@ -112,6 +135,8 @@ const winterMessage = 'o inverno está chegando'
 
 // console.log(winterMessage.indexOf('v'));
 
+console.log(winterMessage.indexOf("v"));
+
 /*
 12 - Comente o console.log acima, e,
 
@@ -119,6 +144,8 @@ const winterMessage = 'o inverno está chegando'
 */
 
 // console.log(winterMessage.lastIndexOf('n'));
+
+console.log(winterMessage.lastIndexOf('n'));
 
 /*
 13 - Comente o console.log acima, e,
@@ -130,6 +157,8 @@ const winterMessage = 'o inverno está chegando'
 const harryPotterAuthor = 'J.K. Rowling'
 // console.log(harryPotterAuthor.slice(0, 4));
 
+console.log(harryPotterAuthor.slice(0, 4));
+
 /*
 14 - Comente o console.log acima, e,
 
@@ -139,8 +168,12 @@ const harryPotterAuthor = 'J.K. Rowling'
 */
 
 const bestMovie = 'E o Oscar de melhor filme vai para: "La la land"!'
-const realBestMovie = bestMovie.replace('La la land', 'Moonlight');
+// const realBestMovie = bestMovie.replace('La la land', 'Moonlight');
 // console.log(realBestMovie);
+
+const realBestMovie = bestMovie.replace("La la land", "Moonlight");
+
+console.log(realBestMovie);
 
 /*
 15 - Comente o console.log acima, e,
@@ -161,7 +194,7 @@ const reminder = 10 % 3;
 */
 
 let episodes = 6
-episodes++;
+// episodes++;
 // console.log(episodes);
 
 /*
@@ -172,7 +205,7 @@ episodes++;
 - O valor exibido no console deve ser 6.
 */
 
-episodes--;
+// episodes--;
 // console.log(episodes);
 
 /*
@@ -182,7 +215,7 @@ episodes--;
 - Após a atribuição, exiba a let "episodes" no console.
 */
 
-episodes += 4;
+// episodes += 4;
 // console.log(episodes);
 
 /*
@@ -194,7 +227,7 @@ episodes += 4;
 */
 
 let allEpisodes = 'O nº de episódios é: NUMERO_DE_EPISÓDIOS';
-allEpisodes = allEpisodes.replace('NUMERO_DE_EPISÓDIOS', episodes)
+// allEpisodes = allEpisodes.replace('NUMERO_DE_EPISÓDIOS', episodes)
 // console.log(allEpisodes);
 
 /*
@@ -221,7 +254,7 @@ const bookMessage = '\'O Conto da Aia\' é um dos livros mais vendidos da décad
 */
 
 const name = 'walter white';
-let newName = name[0].toUpperCase() + name.slice(1, 6) + " " + name[7].toUpperCase() + name.slice(8);
+// let newName = name[0].toUpperCase() + name.slice(1, 6) + " " + name[7].toUpperCase() + name.slice(8);
 // console.log(newName);
 
 /*
@@ -234,5 +267,5 @@ let newName = name[0].toUpperCase() + name.slice(1, 6) + " " + name[7].toUpperCa
 - Exiba a "newName" no console;
 */
 
-newName = `${name[0].toUpperCase()}${name.slice(1, 6)} ${name[7].toUpperCase()}${name.slice(8)}`
-console.log(newName);
+// newName = `${name[0].toUpperCase()}${name.slice(1, 6)} ${name[7].toUpperCase()}${name.slice(8)}`
+// console.log(newName);
