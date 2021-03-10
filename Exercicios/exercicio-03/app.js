@@ -10,7 +10,8 @@
 02 - Armazene um array vazio em uma let "brazilianFoods";
 */
 
-const brazilianFoods = [];
+// const brazilianFoods = [];
+let brazilianFoods = [];
 
 /*
 03 - Use o método adequado para adicionar os 3 seguintes itens ao array:
@@ -22,8 +23,11 @@ const brazilianFoods = [];
 - Exiba a brazilianFoods no console.
 */
 
-brazilianFoods.push('Coxinha', null, 'Brigadeiro');
+// brazilianFoods.push('Coxinha', null, 'Brigadeiro');
 // console.log(brazilianFoods);
+
+brazilianFoods.push('Coxinha', null, 'Brigadeiro');
+console.log(brazilianFoods);
 
 
 /*
@@ -34,8 +38,12 @@ array "brazilianFoods" (null) seja substituído por "Pão de Queijo";
 - Exiba apenas o 2º item desse array no console.
 */
 
-brazilianFoods[1] = 'Pão de Queijo';
+// brazilianFoods[1] = 'Pão de Queijo';
 // console.log(brazilianFoods[1]);
+
+brazilianFoods[1] = 'Pão de Queijo';
+
+console.log(brazilianFoods[1]);
 
 /*
 05 - Comente o console.log acima e:
@@ -50,8 +58,15 @@ mas sem digitar os nomes das comidas diretamente;
 - Exiba a foodsInfo no console.
 */
 
-const foodsInfo = `Até aqui, o array "brazilianFoods" possui ${brazilianFoods.length} itens: ${brazilianFoods[0]}, ${brazilianFoods[1]}, ${brazilianFoods[2]}.`;
+// const foodsInfo = `Até aqui, o array "brazilianFoods" possui ${brazilianFoods.length} itens: ${brazilianFoods[0]}, ${brazilianFoods[1]}, ${brazilianFoods[2]}.`;
 // console.log(foodsInfo);
+
+const lengthBrazilianFoods = brazilianFoods.length;
+const foods = brazilianFoods.join(", ").replace(', B', ' e B');
+
+const foodsInfo = `Até aqui, o array "brazilianFoods" possui ${lengthBrazilianFoods} itens: ${foods}.`;
+
+console.log(foodsInfo);
 
 /*
 06 - Comente o console.log acima e:
@@ -65,10 +80,16 @@ itens "Lilica" e "Matilda";
 - Exiba a "dogNames" no console.
 */
 
+// const maleDogNames = ['Chico', 'Zeca'];
+// const femaleDogNames = ['Lilica', 'Matilda'];
+// const dogNames = maleDogNames.concat(femaleDogNames);
+// console.log(dogNames);
+
 const maleDogNames = ['Chico', 'Zeca'];
 const femaleDogNames = ['Lilica', 'Matilda'];
-const dogNames = maleDogNames.concat(femaleDogNames);
-// console.log(dogNames);
+let dogNames = maleDogNames.concat(femaleDogNames);
+
+console.log(dogNames);
 
 /*
 07 - Comente o console.log acima e:
@@ -80,6 +101,8 @@ const dogNames = maleDogNames.concat(femaleDogNames);
 */
 
 // console.log(dogNames.join(', '));
+
+console.log(dogNames.join(', '));
 
 /*
 08 - Comente o console.log acima e:
@@ -94,8 +117,12 @@ utilizando o método adequado para isso;
 agora é "Lilica".
 */
 
-const dogNamesLength = dogNames.length;
+// const dogNamesLength = dogNames.length;
 // console.log(dogNames[dogNamesLength - 1]);
+
+dogNames.pop();
+const indexLastItem = dogNames.length - 1;
+console.log(dogNames[indexLastItem]);
 
 /*
 09 - Comente o console.log acima e:
@@ -109,9 +136,20 @@ apenas as letras iniciais dos nomes do array "dogNames";
 - Exiba a "initials" no console.
 */
 
-dogNames.push('Nina');
-const initials = `${dogNames[0][0]}${dogNames[1][0]}${dogNames[2][0]}${dogNames[3][0]}${dogNames[4][0]}`;
+// dogNames.push('Nina');
+// const initials = `${dogNames[0][0]}${dogNames[1][0]}${dogNames[2][0]}${dogNames[3][0]}${dogNames[4][0]}`;
 // console.log(initials);
+
+dogNames.push('Nina');
+
+const chicoPrimeiraLetra = dogNames[0][0];
+const zecaPrimeiraLetra = dogNames[1][0];
+const lilicaPrimeiraLetra = dogNames[2][0];
+const ninaPrimeiraLetra = dogNames[3][0];
+
+const initials = `${chicoPrimeiraLetra}${zecaPrimeiraLetra}${lilicaPrimeiraLetra}${ninaPrimeiraLetra}`
+
+console.log(initials);
 
 /*
 10 - Comente o console.log acima e:
@@ -121,6 +159,8 @@ const initials = `${dogNames[0][0]}${dogNames[1][0]}${dogNames[2][0]}${dogNames[
 */
 
 // console.log(initials.toLowerCase());
+
+console.log(initials.toLowerCase());
 
 /*
 11 - Comente o console.log acima e:
@@ -138,10 +178,22 @@ constante que você criou.
 'A SOBREMESA é um doce à base de coco, tradicional na América Latina e em Angola.'
 */
 
-const dessert = `${dogNames[0].slice(-2)}${dogNames[1].slice(
-  -2
-)}${dogNames[4].slice(-2)}`.replace("n", "d");
+// const dessert = `${dogNames[0].slice(-2)}${dogNames[1].slice(
+//   -2
+// )}${dogNames[4].slice(-2)}`.replace("n", "d");
 // console.log(`A ${dessert} é um doce à base de coco, tradicional da América Latina e em Angola`);
+
+console.log(dogNames);
+
+const chicoUltimas2Letras = dogNames[0].slice(-2);
+const zecaUltimas2Letras = dogNames[1].slice(-2);
+const ninaUltimas2Letras = dogNames[3].slice(-2);
+
+const dessert = `${chicoUltimas2Letras}${zecaUltimas2Letras}${ninaUltimas2Letras}`
+
+const sobremesa = dessert.replace('na', 'da');
+
+console.log(`A ${sobremesa} é um doce à base de coco, tradicional na América Latina e em Angola.`);
 
 /*
 12 - Comente o console.log acima e:
@@ -156,6 +208,10 @@ já tem, mais 4;
 - Agora, o resultado exibido no console deve ser 729.
 */
 
-let addNumbers = [3, 5, 7];
-addNumbers[1] += 4;
+// let addNumbers = [3, 5, 7];
+// addNumbers[1] += 4;
 // console.log(addNumbers[1] ** 3)
+
+const addNumbers = [3, 5, 7];
+addNumbers[1] += 4;
+console.log(addNumbers[1] ** 3);
