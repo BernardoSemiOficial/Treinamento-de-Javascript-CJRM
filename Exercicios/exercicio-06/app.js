@@ -23,7 +23,7 @@
     "Nem pera nem abacaxi existem no array "fruits".".
 */
 
-// const fruits = ['morango', 'banana', 'mamão'];
+const fruits = ['morango', 'banana', 'mamão'];
 
 // const existeAbacaxiEmFruits = fruits.includes('abacaxi');
 // const existePeraEmFruits = fruits.includes('pera');
@@ -37,6 +37,19 @@
 // else {
 //   console.log('Nem pera, nem abacaxi existem no array "fruits".');
 // }
+
+const existeAbacaxi = fruits.includes('abacaxi');
+const existePera = fruits.includes("pera");
+
+if(existeAbacaxi) {
+  console.log("A string 'abacaxi' existe no array fruits.");
+}
+else if (existePera) {
+  console.log("A string 'pera' existe no array fruits.");
+}
+else {
+  console.log("Nem pera nem abacaxi existem no array 'fruits'.");
+}
 
 /*
   02
@@ -70,6 +83,19 @@
 //   console.log("Bom madrugada!");
 // }
 
+const hora = 6;
+
+if(hora >= 18) {
+  console.log('Bom noite!');
+}
+else if(hora >= 12) {
+  console.log('Bom tarde!');
+}
+else if(hora >= 6) {
+  console.log('Bom dia!');
+}
+
+
 /*
   03
 
@@ -97,6 +123,17 @@
 
 // console.log(mensagem);
 
+const myIdade = 19;
+let message = '';
+
+if(myIdade <= 7 || myIdade >= 65) {
+  message = `Para você, a entrada é grátis!`
+}
+else {
+  message = `A entrada é R$ 30,00.`
+}
+
+console.log(message);
 
 /*
   04
@@ -107,7 +144,7 @@
   - O resultado deve ser: [34, 46, 90, 25, 11, 89, 76].
 */
 
-// const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99]
+const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99]
 // let numbersSelecionado = [];
 
 // for (let i = 0; i < numbers.length; i++) {
@@ -119,6 +156,20 @@
 // }
 
 // console.log(numbersSelecionado);
+
+const newArrayNumbers = [];
+
+for(let i = 0; i < numbers.length; i++) {
+
+  const currentNumber = numbers[i];
+  const currentNumberEntre11e90 = currentNumber >= 11 && currentNumber <= 90
+
+  if(currentNumberEntre11e90) {
+    newArrayNumbers.push(currentNumber);
+  }
+}
+
+console.log(newArrayNumbers);
 
 /*
   05
@@ -135,27 +186,52 @@
 
 const crazyArray = [true, 869, 'oi', 71, false, 83, '35', true, 397, 'js', false];
 
-let quantBooleans = 0;
-let quantStrings = 0;
-let quantNumbers = 0;
+// let quantBooleans = 0;
+// let quantStrings = 0;
+// let quantNumbers = 0;
 
-for(let i = 0; i < crazyArray.length; i++) {
-  const valorAtual = crazyArray[i];
-  const isBoolean = typeof valorAtual === "boolean";
-  const isString = typeof valorAtual === "string";
+// for(let i = 0; i < crazyArray.length; i++) {
+//   const valorAtual = crazyArray[i];
+//   const isBoolean = typeof valorAtual === "boolean";
+//   const isString = typeof valorAtual === "string";
 
-  if(isBoolean) {
-    quantBooleans++;
-  }
-  else if(isString) {
-    quantStrings++;
-  }
-  else {
-    quantNumbers++;
-  }
-}
+//   if(isBoolean) {
+//     quantBooleans++;
+//   }
+//   else if(isString) {
+//     quantStrings++;
+//   }
+//   else {
+//     quantNumbers++;
+//   }
+// }
 
 // console.log(`O crazyArray tem ${quantBooleans} booleans, ${quantNumbers} números e ${quantStrings} strings.`);
+
+let quantBooleans = null;
+let quantNumbers = null;
+let quantString = null;
+
+for(let i = 0; i < crazyArray.length; i++) {
+
+  const currentItem = crazyArray[i];
+  const typeofCurrentItemIsBoolean = typeof currentItem === "boolean";
+  const typeofCurrentItemIsNumber = typeof currentItem === "number";
+
+  if(typeofCurrentItemIsBoolean) {
+    quantBooleans++;
+  }
+  else if(typeofCurrentItemIsNumber) {
+    quantNumbers++;
+  }
+  else {
+    quantString++;
+  }
+
+}
+
+console.log(`O crazyArray tem ${quantBooleans} booleans, ${quantNumbers} números e ${quantString} strings.`);
+
 
 
 /*
@@ -176,23 +252,44 @@ for(let i = 0; i < crazyArray.length; i++) {
 */
 
 const randomNumbers = [73, 4, 67, 10, 31, 58];
-const arrayPares = [];
-const arrayImpares = [];
+// const arrayPares = [];
+// const arrayImpares = [];
 
-for(let i = 0; i < randomNumbers.length; i++) {
-  const numAtual = randomNumbers[i];
-  const isNumberPar = numAtual % 2 === 0;
+// for(let i = 0; i < randomNumbers.length; i++) {
+//   const numAtual = randomNumbers[i];
+//   const isNumberPar = numAtual % 2 === 0;
 
-  if(isNumberPar) {
-    arrayPares.push(numAtual);
-  }
-  else {
-    arrayImpares.push(numAtual);
-  }
-}
+//   if(isNumberPar) {
+//     arrayPares.push(numAtual);
+//   }
+//   else {
+//     arrayImpares.push(numAtual);
+//   }
+// }
 
-const stringPares = arrayPares.join(", ").replace(', 58', " e 58");
-const stringImpares = arrayImpares.join(", ").replace(", 31", " e 31");
+// const stringPares = arrayPares.join(", ").replace(', 58', " e 58");
+// const stringImpares = arrayImpares.join(", ").replace(", 31", " e 31");
 
 // console.log(stringPares);
 // console.log(stringImpares);
+
+const arrayPar = [];
+const arrayImpar = [];
+
+for(let i = 0; i < randomNumbers.length; i++) {
+
+  const currentNumber = randomNumbers[i];
+  const currentNumberIsPar = currentNumber % 2 === 0;
+
+  if(currentNumberIsPar) {
+    arrayPar.push(currentNumber);
+  }
+  else {
+    arrayImpar.push(currentNumber);
+  }
+}
+
+const stringFormatArrayPar = arrayPar.join(', ').replace(", 58", " e 58");
+const stringFormatArrayImpar = arrayImpar.join(', ').replace(", 31", " e 31");
+
+console.log(`Numeros ímpares: ${stringFormatArrayImpar}. Números pares: ${stringFormatArrayPar}.`);
