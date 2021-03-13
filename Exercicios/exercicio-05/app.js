@@ -29,6 +29,14 @@
 //   i++;
 // }
 
+// let i = 1;
+
+// while(i <= 5) {
+//   console.log(i);
+
+//   i++;
+// }
+
 /*
   02 - Comente a declaração da let e o loop acima e:
 
@@ -38,6 +46,10 @@
 // for(let i = 0; i <= 5; i++) {
 //   console.log(i);
 // }
+
+for(let i = 1; i <= 5; i++) {
+  console.log(i);
+}
 
 /*
   03 - Comente o loop acima e:
@@ -53,6 +65,10 @@
 // for(let i = 1; i <= 10; i++) {
 //   console.log(`Esta é a ${i}ª vez que esta frase é exibida no console.`);
 // }
+
+for(let i = 1; i <= 10; i++) {
+  console.log(`Esta é a ${i}ª vez que esta frase é exibida no console.`);
+}
 
 /*
   04 - Comente o loop acima e:
@@ -73,6 +89,15 @@ const cities = ['São Paulo', 'Rio de Janeiro', 'Minas Gerais'];
 
 // console.log(upperCaseCities);
 
+let upperCaseCities = [];
+
+for(let i = 0; i < cities.length; i++) {
+  const cidadeEmMaiusculo = cities[i].toUpperCase();
+  upperCaseCities.push(cidadeEmMaiusculo);
+}
+
+console.log(upperCaseCities);
+
 /*
   05 - Comente o console.log acima e:
 
@@ -83,13 +108,21 @@ const cities = ['São Paulo', 'Rio de Janeiro', 'Minas Gerais'];
 */
 
 const names = ['João Grilo', 'Chicó', 'Rosinha']
+// let templateHTML = "";
+
+// for(let i = 0; i < names.length; i++) {
+//   templateHTML += `<li>${names[i]}</li>`
+// }
+
+// console.log(templateHTML);
+
 let templateHTML = "";
 
 for(let i = 0; i < names.length; i++) {
   templateHTML += `<li>${names[i]}</li>`
 }
 
-// console.log(templateHTML);
+console.log(templateHTML);
 
 /*
   06 - Comente o console.log acima e:
@@ -101,13 +134,21 @@ for(let i = 0; i < names.length; i++) {
 */
 
 const numbers = ['91', '5', '30', '97', '83', '31'];
-let totalNumbers = null;
+// let totalNumbers = null;
 
-for(let i = 0; i < numbers.length; i++) {
-  totalNumbers += Number(numbers[i]);
-}
+// for(let i = 0; i < numbers.length; i++) {
+//   totalNumbers += Number(numbers[i]);
+// }
 
 //console.log(totalNumbers === 337, totalNumbers);
+let somatoria = null;
+
+for(let i = 0; i < numbers.length; i++) {
+  const currentNumber = Number(numbers[i]);
+  somatoria += currentNumber;
+}
+
+console.log(somatoria, somatoria === 337);
 
 
 /*
@@ -129,19 +170,31 @@ for(let i = 0; i < numbers.length; i++) {
 */
 
 const arrays = [
-  [4, 32, 8],
+  [4, 32, 8,],
   [64, 8, 32],
   [8, 32, 16],
   [2, 8, 4]
 ]
 
-let totalArrayNumbers = null;
+// let totalArrayNumbers = null;
+
+// for(let i = 0; i < arrays.length; i++) {
+
+//   for(let j = 0; j < arrays[i].length; j++) {
+//     totalArrayNumbers += arrays[i][j];
+//   }
+// }
+
+// console.log(totalArrayNumbers);
+
+let totalNumberArray = null;
 
 for(let i = 0; i < arrays.length; i++) {
 
   for(let j = 0; j < arrays[i].length; j++) {
-    totalArrayNumbers += arrays[i][j];
+    totalNumberArray += arrays[i][j];
   }
+
 }
 
-// console.log(totalArrayNumbers);
+console.log(totalNumberArray);
