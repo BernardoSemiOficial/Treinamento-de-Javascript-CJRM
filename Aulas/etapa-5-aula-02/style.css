@@ -1,0 +1,11 @@
+.success {
+    color: teal;
+    padding: 10px;
+    border: 2px dotted teal;
+}
+
+.error {
+    color: lightcoral;
+    padding: 10px;
+    border: 2px dotted lightcoral;
+}
