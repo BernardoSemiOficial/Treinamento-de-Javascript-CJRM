@@ -37,16 +37,19 @@ numbers.forEach(addItemNaLista)
 
 const itens = ul.querySelectorAll('li');
 
-itens.forEach(item => {
-
+const changeColorItem = item => {
   const numberAtual = Number(item.textContent);
-  
-  item.style.color = "pink";
 
-  if(numberAtual % 2 === 0) {
+  
+  if (numberAtual % 2 === 0) {
     item.style.color = "lightblue";
+    return
   }
-})
+
+  item.style.color = "pink";
+};
+
+itens.forEach(changeColorItem);
 
 /*
   04
@@ -55,6 +58,8 @@ itens.forEach(item => {
 
   P.s: a classe "body-background" já está declarada no style.css.
 */
+
+// const body = document.querySelector('body');
 
 document.body
   .classList.add('body-background');
