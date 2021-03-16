@@ -7,13 +7,19 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
-function multiplica(primeiroNumero = 0, segundoNumero = 0) {
-  return primeiroNumero * segundoNumero;
-}
+// function multiplica(primeiroNumero = 0, segundoNumero = 0) {
+//   return primeiroNumero * segundoNumero;
+// }
 
 // const resultado = multiplica(2, 9);
 
 // console.log(resultado);
+
+function multiplica(num1, num2)  {
+  return num1 * num2;
+}
+
+console.log(multiplica(2, 4));
 
 /*
   02
@@ -23,13 +29,19 @@ function multiplica(primeiroNumero = 0, segundoNumero = 0) {
     2 números.
 */
 
-const dividi = function (primeiroNumero = 0, segundoNumero = 0) {
-  return primeiroNumero / segundoNumero;
-}
+// const dividi = function (primeiroNumero = 0, segundoNumero = 0) {
+//   return primeiroNumero / segundoNumero;
+// }
 
 // const resultado = dividi(1, 3);
 
 // console.log(resultado);
+
+const dividir = function (num1, num2) {
+  return num1 / num2;
+}
+
+console.log(dividir(16, 4));
 
 /*
   03
@@ -50,6 +62,14 @@ const dividi = function (primeiroNumero = 0, segundoNumero = 0) {
 
 // for(let i = 1; i <= 7; i++) {
 //   mensagem(`Esta é a ${i}ª vez que essa string é exibida.`);
+// }
+
+function log(string = 'Nenhum texto inserido') {
+  console.log(string);
+}
+
+// for(let i = 1; i <= 7; i++) {
+//   log(`Esta é a ${i}ª vez que essa string é exibida.`);
 // }
 
 /*
@@ -82,6 +102,19 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
 // console.log(result);
 
 
+function itemEmUpperCase (array) {
+  const millennialWordsUpperCase = [];
+
+  for(let i = 0; i < millennialWords.length; i++) {
+  
+    const currentItem = millennialWords[i].toUpperCase();
+    millennialWordsUpperCase.push(currentItem)
+  }
+
+  return millennialWordsUpperCase;
+}
+
+// console.log(itemEmUpperCase());
 
 /*
   05
@@ -95,31 +128,53 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3];
+// function ePositivo(number) {
+//   return number >= 1;
+// }
 
-function ePositivo(number) {
-  return number >= 1;
-}
+// let quantNumeros = null;
+// let quantNumPositivos = null;
+// let quantNumNegativos = null;
 
-let quantNumeros = null;
-let quantNumPositivos = null;
-let quantNumNegativos = null;
+// for(let i = 0; i < randomNumbers.length; i++) {
 
-for(let i = 0; i < randomNumbers.length; i++) {
+//   const valorAtual = randomNumbers[i];
 
-  const valorAtual = randomNumbers[i];
+//   if(ePositivo(valorAtual)) {
+//     quantNumPositivos++;
+//   } else {
+//     quantNumNegativos++
+//   }
 
-  if(ePositivo(valorAtual)) {
-    quantNumPositivos++;
-  } else {
-    quantNumNegativos++
-  }
-
-  quantNumeros++;
-}
+//   quantNumeros++;
+// }
 
 // console.log(`O array "randomNumbers" possui ${quantNumeros} números, sendo ${quantNumPositivos} positivos e ${quantNumNegativos} negativos.`);
 
+function ePositivo(num) {
+  return num >= 1;
+}
 
+let totalNum = null;
+let totalNumPositivos = null;
+let totalNumNegativos = null;
+
+for(let i = 0; i < randomNumbers.length; i++) {
+  const currentItem = randomNumbers[i];
+
+  if(ePositivo(currentItem)) {
+    totalNumPositivos++;
+  }
+  else {
+    totalNumNegativos++;
+  }
+
+  totalNum++;
+}
+
+console.log(
+  `O array "randomNumbers" possui ${totalNum} números, sendo ${totalNumPositivos} positivos e ${totalNumNegativos} negativos.`
+);
 
 /*
   06
@@ -131,25 +186,40 @@ for(let i = 0; i < randomNumbers.length; i++) {
     função.
 */
 
-function getOddNumbers(array = []) {
+// function getOddNumbers(array = []) {
 
-  const arrayNumberOdd = [];
+//   const arrayNumberOdd = [];
 
-  for (let i = 0; i < array.length; i++) {
-    const item = array[i];
-    const eItemOdd = item % 2 !== 0;
+//   for (let i = 0; i < array.length; i++) {
+//     const item = array[i];
+//     const eItemOdd = item % 2 !== 0;
 
-    if(eItemOdd) {
-      arrayNumberOdd.push(item);
+//     if(eItemOdd) {
+//       arrayNumberOdd.push(item);
+//     }
+//   }
+
+//   return arrayNumberOdd;
+// }
+
+function getOddNumbers(array) {
+
+  const newArray = [];
+
+  for(let i = 0; i < array.length; i++) {
+    const currentItem = array[i];
+    const isOdd = currentItem % 2 === 1;
+
+    if(isOdd) {
+      newArray.push(currentItem);
     }
   }
-
-  return arrayNumberOdd;
+  return newArray;
 }
 
 const arrayNumberOdd = getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42]);
 
-// console.log(arrayNumberOdd);
+console.log(arrayNumberOdd);
 
 /*
   07
@@ -188,13 +258,23 @@ const functions = [
   function () { return 'Ocidentais.' }
 ]
 
-const mensagem = [];
+// const mensagem = [];
+
+// for(let i = 0; i < functions.length; i++) {
+//   const functionMensagem = functions[i]();
+//   mensagem.push(functionMensagem)
+// }
+
+// const espacoPalavras = mensagem.join(" ");
+
+// console.log(espacoPalavras);
+
+let mensagem = '';
 
 for(let i = 0; i < functions.length; i++) {
-  const functionMensagem = functions[i]();
-  mensagem.push(functionMensagem)
+  const currentItem = functions[i];
+
+  mensagem += `${currentItem()} `
 }
 
-const espacoPalavras = mensagem.join(" ");
-
-console.log(espacoPalavras);
+console.log(mensagem);
