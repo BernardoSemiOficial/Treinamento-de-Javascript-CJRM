@@ -6,6 +6,7 @@
 */
 
 // console.log(!true, !false)
+console.log(!true, !false);
 
 /*
   02
@@ -16,8 +17,8 @@
   - Se existir, exiba no console a mensagem "Existe um leão no array animals.".
 */
 
-const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo'];
-const naoExisteItemLeao = !animals.includes("leão");
+const animals = ['macaco', 'tucano', 'elefante', "leão",'pavão', 'hipopótamo'];
+// const naoExisteItemLeao = !animals.includes("leão");
 
 // if(naoExisteItemLeao) {
 //   console.log('Leão não existe no array animals');
@@ -25,6 +26,14 @@ const naoExisteItemLeao = !animals.includes("leão");
 // else {
 //   console.log('Existe um leão no array animals');
 // }
+
+const existeLeaoNoArray = !animals.includes('leão');
+
+if(existeLeaoNoArray) {
+  console.log(`Leão não existe no array animals.`);
+} else {
+  console.log(`Existe um leão no array animals.`);
+}
 
 /*
   03
@@ -37,7 +46,7 @@ const naoExisteItemLeao = !animals.includes("leão");
   "A soma ultrapassou 400. Até aqui, o valor atual é RESULTADO_DA_SOMA."
 */
 
-// const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
+const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
 // let somRandomNumbers = 0;
 // const numLimit = 400;
 
@@ -57,6 +66,22 @@ const naoExisteItemLeao = !animals.includes("leão");
 
 // }
 
+let somaNumbers = null;
+
+for(let i = 0; i < randomNumbers.length; i++) {
+
+  const somaEMaiorQue400 = (somaNumbers + randomNumbers[i]) >= 400;
+
+  if(somaEMaiorQue400) {
+    console.log(
+      `A soma ultrapassou 400. Até aqui, o valor atual é ${somaNumbers}.`
+    );
+    break
+  }
+
+  somaNumbers += randomNumbers[i];
+}
+
 
 /*
   04
@@ -68,18 +93,31 @@ const naoExisteItemLeao = !animals.includes("leão");
 */
 
 const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sabedoria.']
+// let frase = '';
+
+// for(let i = 0; i < sentence.length; i++) {
+//   const palavraAtual = sentence[i];
+
+//   if(palavraAtual === 'certeza')
+//     continue
+
+//   frase += ' ' + palavraAtual;
+// }
+
+// console.log(frase);
+
 let frase = '';
 
 for(let i = 0; i < sentence.length; i++) {
-  const palavraAtual = sentence[i];
 
-  if(palavraAtual === 'certeza')
-    continue
+  const palavraDiferenteDeCerteza = sentence[i] !== 'certeza';
 
-  frase += ' ' + palavraAtual;
+  if(palavraDiferenteDeCerteza) {
+    frase += ` ${sentence[i]}`;
+  }
 }
 
-// console.log(frase);
+console.log(frase);
 
 /*
   05
@@ -98,37 +136,72 @@ for(let i = 0; i < sentence.length; i++) {
 
 const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null]
 
-let somIteracoesNoArray = 0;
-let somBooleansIterados = 0;
-let somStringsIterados = 0;
-let stringIteradas = '';
+// let somIteracoesNoArray = 0;
+// let somBooleansIterados = 0;
+// let somStringsIterados = 0;
+// let stringIteradas = '';
 
-for(let i = 0; i < randomValues.length; i++) {
+// for(let i = 0; i < randomValues.length; i++) {
 
-  somIteracoesNoArray++;
-  const valorAtual = randomValues[i];
-  const typeofDoValorAtual = typeof valorAtual;
+//   somIteracoesNoArray++;
+//   const valorAtual = randomValues[i];
+//   const typeofDoValorAtual = typeof valorAtual;
 
-  const typeofIgualAString = typeofDoValorAtual === 'string';
-  const typeofIgualABoolean = typeofDoValorAtual === 'boolean';
+//   const typeofIgualAString = typeofDoValorAtual === 'string';
+//   const typeofIgualABoolean = typeofDoValorAtual === 'boolean';
 
-  if(typeofIgualAString) {
-    somStringsIterados++;
-    stringIteradas += valorAtual + ", ";
+//   if(typeofIgualAString) {
+//     somStringsIterados++;
+//     stringIteradas += valorAtual + ", ";
 
-    if(somStringsIterados === 4) break
-  }
-  else if (typeofIgualABoolean) {
-    somBooleansIterados++;
-  } 
+//     if(somStringsIterados === 4) break
+//   }
+//   else if (typeofIgualABoolean) {
+//     somBooleansIterados++;
+//   } 
 
-}
+// }
 
-const stringFormatada = stringIteradas.replace(', Git,', ' e Git;');
+// const stringFormatada = stringIteradas.replace(', Git,', ' e Git;');
 
 // console.log(`As primeiras 4 strings são: ${stringFormatada}`);
 // console.log(`Até que as primeiras 4 strings fossem iteradas, ${somBooleansIterados} booleans foram iterados;`);
 // console.log(`O array foi iterado por ${somIteracoesNoArray} vezes.`);
+
+let totalDeIteracoes = null;
+let totalDeStringIterados = null;
+let totalDeBooleanIterados = null;
+let stringIteradas = '';
+
+for(let i = 0; i < randomValues.length; i++) {
+  
+  const currentItem = randomValues[i];
+  const isString = typeof currentItem === 'string';
+  const isBoolean = typeof currentItem === 'boolean';
+  
+  if (isString) {
+    stringIteradas += `${currentItem}, `;
+    totalDeStringIterados++;
+
+    if(totalDeStringIterados === 4) {
+      break
+    }
+  }
+  else if(isBoolean) {
+    totalDeBooleanIterados++;
+  }
+  totalDeIteracoes++;
+}
+
+const stringFormatada = stringIteradas.replace(', Git, ', ' e Git');
+
+console.log(`
+3 informações sobre o array randomValues:
+- As primeiras 4 strings são ${stringFormatada};
+- Até que as primeiras 4 strings fossem iteradas, ${totalDeBooleanIterados} booleans foram iterados;
+- O array foi iterado por ${totalDeIteracoes} vezes.
+`);
+
 
 /*
   06
@@ -150,25 +223,43 @@ const stringFormatada = stringIteradas.replace(', Git,', ' e Git;');
     da bebida além da que você escolheu.
 */
 
-const drinkType = 'suco';
+const drinkType = 'água';
+
+// let mensagem = '';
+
+// switch(drinkType) {
+//   case 'água':
+//     mensagem = 'Substância química cujas moléculas são formadas por dois átomos de hidrogênio e um de oxigênio.'
+//     break
+//   case 'refrigerante':
+//     mensagem = 'Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar.'
+//     break
+//   case 'suco':
+//     mensagem = 'Bebida produzida do líquido extraído de frutos.';
+//     break
+//   default:
+//     mensagem = 'Bebida desconhecida';
+// }
+
+// console.log(mensagem);
 
 let mensagem = '';
 
 switch(drinkType) {
   case 'água':
-    mensagem = 'Substância química cujas moléculas são formadas por dois átomos de hidrogênio e um de oxigênio.'
+    mensagem = "Substância química cujas moléculas são formadas por dois átomos de hidrogênio e um de oxigênio.";
     break
   case 'refrigerante':
-    mensagem = 'Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar.'
+    mensagem = "Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar.";
     break
   case 'suco':
-    mensagem = 'Bebida produzida do líquido extraído de frutos.';
+    mensagem = "Bebida produzida do líquido extraído de frutos.";
     break
-  default:
-    mensagem = 'Bebida desconhecida';
+  default: 
+    mensagem = 'Bebida desconhecida.'
 }
 
-// console.log(mensagem);
+console.log(mensagem);
 
 /*
   07
@@ -188,14 +279,28 @@ const number = 1;
 //   console.log('O valor de "a" é qualquer número, exceto 0 e 1')
 // }
 
+// switch(number) {
+//   case 0:
+//     console.log(`O valor de number é ${number}`);
+//     break
+//   case 1:
+//     console.log(`O valor de number é ${number}`);
+//     break
+//   default:
+//     console.log(`O valor de number é qualquer número, exceto 0 e 1`);
+//     break
+// }
+
+const textDeA = 'O valor de "a" é';
+
 switch(number) {
   case 0:
-    console.log(`O valor de number é ${number}`);
+    console.log(`${textDeA} ${number}`);
     break
   case 1:
-    console.log(`O valor de number é ${number}`);
+    console.log(`${textDeA} ${number}`);
     break
-  default:
-    console.log(`O valor de number é qualquer número, exceto 0 e 1`);
+  case 2:
+    console.log(`${textDeA} qualquer número, exceto 0 e 1`);
     break
 }
