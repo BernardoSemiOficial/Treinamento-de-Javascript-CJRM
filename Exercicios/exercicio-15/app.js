@@ -10,7 +10,11 @@ const ul = document.querySelector('ul');
 
 const lis = Array.from(ul.children)
   
-lis.forEach(element => element.classList.add('video'))
+const addClassVideo = element => element.classList.add("video");
+
+lis.forEach(addClassVideo)
+
+// console.log(lis);
 
 /*
   02
@@ -48,7 +52,12 @@ console.log(ul.previousElementSibling);
     exibida no console.
 */
 
-lis.forEach(element => element.addEventListener('click', evento => console.log(evento.target)))
+const showConsole = evento => console.log(evento.target);
+
+const addEventClickLI = element =>
+  element.addEventListener("click", showConsole);
+
+lis.forEach(addEventClickLI);
 
 /*
   06
@@ -72,14 +81,14 @@ const button = document.querySelector('button');
 
 button.addEventListener('click', adicionarVideos);
 
-function adicionarVideos() {
-  
-  videos.forEach(element => {
-    const item = document.createElement('li');
-    item.textContent = element.name;
-    ul.append(item);
-  })
+const criarVideoLI = element => {
+  const item = document.createElement("li");
+  item.textContent = element.name;
+  ul.append(item);
+};
 
+function adicionarVideos() {
+  videos.forEach(criarVideoLI);
 }
 
 /*
