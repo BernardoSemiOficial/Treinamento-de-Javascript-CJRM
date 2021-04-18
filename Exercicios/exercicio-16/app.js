@@ -5,18 +5,23 @@
     'Clicou na div.' não seja exibida no console.
 */
 
-const div = document.querySelector('div')
-const elementsInsideDiv = Array.from(div.children)
+const div = document.querySelector('div');
+const elementsInsideDiv = Array.from(div.children);
+const h2Mensagem = document.querySelector('.mensagem');
 
 elementsInsideDiv.forEach(element => {
-  element.addEventListener('click', () => {
-    console.log('Clicou no filho da div.')
+  element.addEventListener('click', event => {
+    event.stopPropagation();
+    const tagName = event.target.tagName;
+    h2Mensagem.textContent = `Clicou no ${tagName.toLowerCase()}, filho da div`
   })
 })
 
 div.addEventListener('click', () => {
-  console.log('Clicou na div.')
+  h2Mensagem.textContent ='Clicou na div.';
 })
+
+h2Mensagem.addEventListener('copy', () => console.log('Texto copiado'))
 
 /*
   02
@@ -25,6 +30,8 @@ div.addEventListener('click', () => {
     exibida no console seja "Clicou no NOME_DA_TAG_COM_LETRAS_MINÚSCULAS, filho
     da div.".
 */
+
+
 
 /*
   03
@@ -49,12 +56,25 @@ div.addEventListener('click', () => {
     "Eixo X: COORDENADA_EIXO_X | Eixo Y: COORDENADA_EIXO_Y".
 */
 
+const egg = document.querySelector('.egg')
+
+egg.addEventListener('mousemove', event => {
+  
+  egg.textContent = `X ${event.offsetX} | Y ${event.offsetY}`
+})
+
 /*
   06
 
   - Modifique a cor do ovo para "lightgoldenrodyellow" quando o botão for 
     clicado.
 */
+
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+  egg.style.backgroundColor = "lightgoldenrodyellow";
+})
 
 /*
   07
@@ -76,3 +96,9 @@ const people = [
   { id: 8, name: 'Matheus Manucci', profession: 'Piloto' },
   { id: 9, name: 'Hamilton Silva', profession: 'Advogado' }
 ]
+
+people.some(item => {
+  const isFrontEnd = item.profession === "Front-end developer";
+
+  if(isFrontEnd) console.log('O array people contém, no mínimo, um(a) Front-end developer.');
+})
