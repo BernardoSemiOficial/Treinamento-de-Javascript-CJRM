@@ -1,5 +1,5 @@
 
-
+// Primeira Parte da Aula
 // Parent, children, siblings
 // const article = document.querySelector('article');
 
@@ -22,25 +22,42 @@
 // // Procurar pelo irmão anterior
 // console.log(title.previousElementSibling);
 
-const list = document.querySelector("ul");
+// Segunda Parte da Aula
+// const list = document.querySelector("ul");
+// const button = document.querySelector('button');
 
-const deleteItem = (evento) => {
-    const isChildren = evento.target.nodeName === "LI";
+// const handleClick = () => {
+//   const createItem = document.createElement("li");
+//   createItem.textContent = "Novo item";
+//   list.prepend(createItem);
+// };
+
+// button.addEventListener("click", handleClick);
+
+// const deleteItem = (evento) => {
+//     const isChildren = evento.target.nodeName === "LI";
     
-    isChildren ? evento.target.remove() : null;
-};
+//     isChildren ? evento.target.remove() : null;
+// };
 
-list.addEventListener('click', deleteItem)
-// Array.from(list.children).forEach((item) =>
-//   item.addEventListener("click", deleteItem)
-// );
+// list.addEventListener('click', deleteItem)
 
-const button = document.querySelector('button');
+// Terceira Parte da Aula
 
-const handleClick = () => {
-    const createItem = document.createElement('li');
-    createItem.textContent = 'Novo item';
-    list.prepend(createItem);
-}
+const paragraph = document.querySelector('.copy-me');
 
-button.addEventListener('click', handleClick);
+paragraph.addEventListener('copy', (evento) => {
+  console.log('Copiou', evento);
+  evento.returnValue = true
+  
+})
+
+const div = document.querySelector('.box');
+
+div.addEventListener('mousemove', event => {
+  div.textContent = `X ${event.offsetX} | Y ${event.offsetY}`
+})
+
+document.addEventListener('wheel', event => {
+  console.log(event.pageX, event.pageY);
+})
