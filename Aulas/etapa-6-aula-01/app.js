@@ -1,26 +1,45 @@
 const form = document.querySelector(".signup-form");
-// const usernameInput = document.querySelector("#username");
 
-form.addEventListener('submit', e => {
+const clearInput = () => {
+    input.value = "";
+    input.focus();
+}
+
+const logMensage = mensage => {
+    console.log(mensage);
+}
+
+const isUsernameValid = username => /^[a-zA-Z]{6,12}$/.test(username);
+
+const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const username = usernameInput.value;
+    const input = e.target.username;
+    const username = input.value;
 
-    const username = form.username;
-    console.log("Enviado!!", username);
-})
+    const isAMatch = isUsernameValid(username);
 
+    console.log(isAMatch);
 
-const username = "bernar"
-const pattern = /^[a-z]{6,}$/g;
+    if (isAMatch) {
+      logMensage("O teste da regex passou =)");
+      return
+    }
 
-const regex = new RegExp(pattern);
-
-const isAMatch = regex.test(username);
-
-if(isAMatch) {
-    console.log("O teste da regex passou =)");
+    logMensage("O teste da reges não passou =(");
 }
-else {
-    console.log("O teste da reges não passou =(");
-}
+
+form.addEventListener('submit', handleSubmit);
+
+const handleKeyUp = (event) => {
+  const isAMatch = isUsernameValid(event.target.value);
+
+  if (isAMatch) {
+    event.target.setAttribute("class", "success");
+    return;
+  }
+
+  event.target.setAttribute("class", "error");
+};
+
+form.username.addEventListener('keyup', handleKeyUp)

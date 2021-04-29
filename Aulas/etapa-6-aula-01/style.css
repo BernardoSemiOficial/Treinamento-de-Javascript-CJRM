@@ -17,4 +17,14 @@ input, button {
     display: block;
     margin: 10px auto;
     padding: 6px;
+    outline: 0;
+    border-radius: 5px;
+}
+
+.success {
+    border: 2px solid green;
+}
+
+.error {
+    border: 2px solid red;
 }
