@@ -21,6 +21,54 @@
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
 
+const inputUsername = document.querySelector('#username');
+
+const isValidInput = (username) => /[a-zA-Z]{6,}/.test(username);
+
+const createFeedback = (mensage, className) => {
+  const p = document.createElement('p');
+  p.textContent = mensage;
+  p.classList.add(className);
+
+  return p;
+}
+
+const insertFeedback = (mensage, className) => {
+  const feedback = createFeedback(
+    mensage,
+    className
+  );
+  inputUsername.insertAdjacentElement("afterend", feedback);
+}
+
+const handleInput = event => {
+  const value = event.target.value;
+  console.log(value);
+
+  const isAMatch = isValidInput(value);
+
+  const isFeedbackVisible = inputUsername.nextElementSibling.tagName === "P";
+
+  if (isFeedbackVisible) {
+    inputUsername.nextElementSibling.remove();
+  }
+  
+  if(isAMatch) {
+    insertFeedback(
+      "Username válido =)",
+      "username-success-feedback"
+    );
+    return
+  }
+  
+  insertFeedback(
+    "O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas",
+    "username-help-feedback"
+  );
+}
+
+inputUsername.addEventListener("input", handleInput);
+
 /*
   02
 
@@ -32,6 +80,35 @@
   - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
   - Não insira o parágrafo manualmente no index.html.
 */
+
+const form = document.querySelector('form');
+
+const handleSubmit = event => {
+  event.preventDefault();
+
+  const value = inputUsername.value;
+  console.log(value);
+
+  const isAMatch = isValidInput(value);
+
+  const isFeedbackVisible = inputUsername.nextElementSibling.tagName === "P";
+
+  if (isFeedbackVisible) {
+    inputUsername.nextElementSibling.remove();
+  }
+
+  if (isAMatch) {
+    insertFeedback("Dados enviados =)", "submit-success-feedback");
+    return;
+  }
+
+  insertFeedback(
+    "Por favor, insira um username válido",
+    "submit-help-feedback"
+  );
+}
+
+form.addEventListener('submit', handleSubmit)
 
 /*
   03
@@ -53,3 +130,21 @@
   Spoiler alert: este tipo de exercício será frequente em etapas mais avançadas  
   do curso, onde falaremos sobre TDD. Vá se aquecendo =D
 */
+
+function some(colecao = [], callback) {
+
+  let validCondition = false;
+
+  for(let i = 0; i < colecao.length; i++) {
+
+    callback(colecao[i])
+      ? validCondition = true
+      : null
+  }
+
+  return validCondition;
+}
+
+const result = some([1, 3, 5, 0], item => item === 0)
+
+console.log(result);
