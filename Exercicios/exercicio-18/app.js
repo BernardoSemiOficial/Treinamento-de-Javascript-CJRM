@@ -21,9 +21,10 @@
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
 
+const form = document.querySelector("form");
 const inputUsername = document.querySelector('#username');
 
-const isValidInput = (username) => /[a-zA-Z]{6,}/.test(username);
+const isValidInput = (username) => /^[a-zA-Z]{6,}$/.test(username);
 
 const createFeedback = (mensage, className) => {
   const p = document.createElement('p');
@@ -41,17 +42,18 @@ const insertFeedback = (mensage, className) => {
   inputUsername.insertAdjacentElement("afterend", feedback);
 }
 
-const handleInput = event => {
-  const value = event.target.value;
-  console.log(value);
-
-  const isAMatch = isValidInput(value);
-
+const removeFeedback = () => {
   const isFeedbackVisible = inputUsername.nextElementSibling.tagName === "P";
 
   if (isFeedbackVisible) {
     inputUsername.nextElementSibling.remove();
   }
+}
+
+const handleInput = event => {
+  const isAMatch = isValidInput(event.target.value);
+
+  removeFeedback();
   
   if(isAMatch) {
     insertFeedback(
@@ -67,7 +69,28 @@ const handleInput = event => {
   );
 }
 
+
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  
+  const isAMatch = isValidInput(inputUsername.value);
+  
+  removeFeedback();
+  
+  if (isAMatch) {
+    insertFeedback("Dados enviados =)", "submit-success-feedback");
+    return;
+  }
+  
+  insertFeedback(
+    "Por favor, insira um username válido",
+    "submit-help-feedback"
+  );
+};
+  
 inputUsername.addEventListener("input", handleInput);
+form.addEventListener("submit", handleSubmit);
 
 /*
   02
@@ -80,35 +103,6 @@ inputUsername.addEventListener("input", handleInput);
   - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
   - Não insira o parágrafo manualmente no index.html.
 */
-
-const form = document.querySelector('form');
-
-const handleSubmit = event => {
-  event.preventDefault();
-
-  const value = inputUsername.value;
-  console.log(value);
-
-  const isAMatch = isValidInput(value);
-
-  const isFeedbackVisible = inputUsername.nextElementSibling.tagName === "P";
-
-  if (isFeedbackVisible) {
-    inputUsername.nextElementSibling.remove();
-  }
-
-  if (isAMatch) {
-    insertFeedback("Dados enviados =)", "submit-success-feedback");
-    return;
-  }
-
-  insertFeedback(
-    "Por favor, insira um username válido",
-    "submit-help-feedback"
-  );
-}
-
-form.addEventListener('submit', handleSubmit)
 
 /*
   03
@@ -140,11 +134,17 @@ function some(colecao = [], callback) {
     callback(colecao[i])
       ? validCondition = true
       : null
+
+      
+    if(validCondition) {
+      break
+    }
+  
   }
 
   return validCondition;
 }
 
-const result = some([1, 3, 5, 0], item => item === 0)
+const result = some([1, 3, 1, 5, 0], item => item === 0)
 
 console.log(result);
