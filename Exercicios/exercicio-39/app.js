@@ -81,20 +81,25 @@ const volkswagenProto = {
   }
 }
 
-const amarok = carMaker({ name: 'Amarok', color: 'preta' })
-const jetta = carMaker({ name: 'Jetta', color: 'prata' })
-
-console.log(amarok, jetta)
-amarok.logCarInfo(); jetta.logCarInfo()
-
-function carMaker({ name, color }) {
-
-  const newObject = {
-      name: name,
-      color: color
+const toyotaProto = {
+  logCarInfo() {
+    console.log(`Toyota ${this.name}, cor ${this.color}.`)
   }
+}
 
-  newObject.__proto__ = volkswagenProto;
+const amarok = carMaker({ name: 'Amarok', color: 'preta' }, volkswagenProto)
+const jetta = carMaker({ name: 'Jetta', color: 'prata' }, volkswagenProto)
+const corolla = carMaker({ name: 'Corolla', color: 'prata' }, toyotaProto)
+
+console.log(amarok, jetta, corolla)
+amarok.logCarInfo(); jetta.logCarInfo(); corolla.logCarInfo()
+
+function carMaker({ name, color }, carProto) {
+
+  const newObject = Object.create(carProto);
+  
+  newObject.name = name;
+  newObject.color = color;
   
   return newObject
 }
@@ -233,123 +238,11 @@ const objectFormated = wrongDataFormat.reduce(organizarProps, {})
 
 function organizarProps(object, currentElement) {
 
-    if(currentElement.includes("preto")) {
-      
-        const [ nada, sigla ] = /[a-zA-Z]{5}\-([A-Z]{1,2})/.exec(currentElement);
-  
-        console.log(sigla)
-      
-        if(!object.preto) {
-          object.preto = {}
-        }
-      
-        const keysObject = Object.keys(object.preto);
-        
-        console.log(keysObject);
-  
-        if(keysObject.length === 0) {
-            object.preto[sigla] = 1;
-        }
-  
-        for(let i = 0; i < keysObject.length; i++) {
-  
-          if(keysObject[i] !== sigla) {
-            object.preto[sigla] = 1;
-          }
-          else {
-            object.preto[sigla] = object.preto[sigla] + 1;
-          }
-        }
-  
-    }
-  
-    if(currentElement.includes("branco")) {
-      
-        const [ nada, sigla ] = /[a-zA-Z]{6}\-([A-Z]{1,2})/.exec(currentElement);
-      
-        if(!object.branco) {
-          object.branco = {}
-        }
-      
-        const keysObject = Object.keys(object.branco);
-        
-        console.log(keysObject);
-  
-        if(keysObject.length === 0) {
-            object.branco[sigla] = 1;
-        }
-  
-        for(let i = 0; i < keysObject.length; i++) {
-  
-          if(keysObject[i] !== sigla) {
-            object.branco[sigla] = 1;
-          }
-          else {
-            object.branco[sigla] = object.branco[sigla] + 1;
-          }
-        }
-  
-    }
-  
-    if(currentElement.includes("vermelho")) {
-      
-        const [ nada, sigla ] = /[a-zA-Z]{8}\-([A-Z]{1,2})/.exec(currentElement);
-  
-        console.log(sigla)
-      
-        if(!object.vermelho) {
-          object.vermelho = {}
-        }
-      
-        const keysObject = Object.keys(object.vermelho);
-        
-        console.log(keysObject);
-  
-        if(keysObject.length === 0) {
-            object.vermelho[sigla] = 1;
-        }
-  
-        for(let i = 0; i < keysObject.length; i++) {
-  
-          if(keysObject[i] !== sigla) {
-            object.vermelho[sigla] = 1;
-          }
-          else {
-            object.vermelho[sigla] = object.vermelho[sigla] + 1;
-          }
-        }
-  
-    }
-  
-    if(currentElement.includes("azul")) {
-      
-        const [ nada, sigla ] = /[a-zA-Z]{4}\-([A-Z]{1,2})/.exec(currentElement);
-  
-        console.log(sigla)
-      
-        if(!object.azul) {
-          object.azul = {}
-        }
-      
-        const keysObject = Object.keys(object.azul);
-        
-        console.log(keysObject);
-  
-        if(keysObject.length === 0) {
-            object.azul[sigla] = 1;
-        }
-  
-        for(let i = 0; i < keysObject.length; i++) {
-  
-          if(keysObject[i] !== sigla) {
-            object.azul[sigla] = 1;
-          }
-          else {
-            object.azul[sigla] = object.azul[sigla] + 1;
-          }
-        }
-  
-    }
+    const [color, size] = currentElement.split('-');
+
+    object[color] = object[color] || {};
+    object[color][size] = object[color][size] || 0;
+    object[color][size] += 1;
   
     return object;
 }
