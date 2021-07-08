@@ -15,17 +15,22 @@
 
     <div class="container text-white my-5">
 
-        <h2>Games</h2>
+        <h2>Games</h2>  
 
         <ul data-list="games"></ul>
 
-        <form>
-            <label for="game">Adicionar game</label>
-
-            <div class="input-group">
-                <input class="form-control bg-transparent text-white" type="text" name="game" placeholder="Ex: Ghost of Tsushima" required autofocus>
-                <input class="btn btn-primary" type="submit" value="Adicionar">
+        <form data-js="add-game-form">
+            <div class="mb-3">
+                <label for="title" class="form-label">Nome: </label>
+                <input class="form-control bg-transparent text-white" type="text" name="title" placeholder="Ex: Ghost of Tsushima" required autofocus>
             </div>
+
+            <div class="mb-3">
+                <label for="developer" class="form-label">Desenvolvedora: </label>
+                <input class="form-control bg-transparent text-white" type="text" name="developer" placeholder="Ex: Riot" required>
+            </div>
+            
+            <input class="btn btn-primary" type="submit" value="Adicionar">
         </form>
 
     </div>
