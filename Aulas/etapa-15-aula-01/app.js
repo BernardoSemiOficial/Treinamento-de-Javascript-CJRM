@@ -3,6 +3,35 @@ const formAddGame = document.querySelector("[data-js='add-game-form']");
 
 const db = firebase.firestore();
 
+db.collection("games").onSnapshot(snapshot => {
+
+    if(!snapshot.metadata.hasPendingWrites) {
+
+        //snapshot.docs.forEach(doc => console.log(doc.data()))
+        snapshot.docs.reduce((acc, doc, index) => {
+    
+            const { title, developedBy, createdAt } = doc.data();
+    
+            acc += `
+                <li id="${doc.id}" data-id="${index}" class="my-4">
+                    <h5>${title}</h5>
+                    <ul>
+                        <li>Desenvolvido por ${developedBy}</li>
+                        <li>Adicionado no banco em ${new Date(createdAt.toDate()).toLocaleDateString("pt-br")}</li>
+                    </ul>
+                    <button data-remove="${index}" class="btn btn-danger btn-sm">Remover</button>
+                </li>
+            `
+    
+            listGames.innerHTML = acc;
+    
+            return acc
+        }, '')
+    }
+
+})
+
+/* OBTENDO OS DOCUMENTS DO COLLECTIONS GAMES
 db.collection("games").get()
     .then(snapshot => {
          console.log(snapshot)
@@ -30,6 +59,7 @@ db.collection("games").get()
     .catch(error => {
         console.log(error.message)
     })
+*/
 
 formAddGame.addEventListener("submit", e => {
     e.preventDefault();
@@ -62,10 +92,15 @@ listGames.addEventListener("click", (e) => {
     const item = document.querySelector(`[data-id='${itemId}']`);
     
     db.collection("games").doc(item.id).delete()
-        .then(snapshot => {
-            console.log(snapshot);
-            item.remove();
+        .then(() => {
+            console.log("Document removido");
         })
-        .catch(error => error.message)
+        .catch(error => error)
 
 })
+
+db.collection("games").doc("7sRFwzx9NLYyjxVGHi85")
+    // .set({ title: "FIFA 2021" }, { merge: true })
+    .update({ title: "League of Legends" })
+    .then(() => console.log("Document atualizado"))
+    .catch((e) => console.log(e))
