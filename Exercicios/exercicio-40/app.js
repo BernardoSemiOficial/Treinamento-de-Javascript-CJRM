@@ -4,7 +4,11 @@
   valores no console no decorrer dessa bateria de exercícios.
 */
 
+function log(...message) {
+    console.log(...message)
+}
 
+log(12, 12)
 
 /*
   02
@@ -22,9 +26,14 @@ const objs = [
 
 const propToRemove = 'b'
 
+function removeProp(prop, objs) {
 
+	const result = objs.map(({ [prop]: _, ...props }) => props)
+	
+	log(result)
+}
 
-// removeProp(propToRemove, objs)
+removeProp(propToRemove, objs);
 
 /*
 [
@@ -59,9 +68,20 @@ const orders = [
   { username: '_rick', status: 'shipped', price: 73.65 }
 ]
 
+function getStatusCount(items){
+	
+	const statusCount = items.reduce((acc, item) => {
+		
+		acc[item.status] = acc[item.status] || 0
+		acc[item.status]++
 
+		return acc
+	}, {})
 
-// getStatusCount(orders)
+	log(statusCount)
+}
+
+getStatusCount(orders)
 
 /*
 {
