@@ -6,19 +6,20 @@
 */
 
 class Animal {
-  constructor (name) {
-    this.name = name
+  constructor(name) {
+    this.name = name;
   }
 }
 
 class Rabbit extends Animal {
-  constructor (name) {
-    this.name = name
-    this.created = new Date()
+  constructor(name) {
+    super(name);
+    this.created = new Date();
   }
 }
 
-// let rabbit = new Rabbit('White Rabbit')
+let rabbit = new Rabbit("White Rabbit");
+// console.log(rabbit);
 
 /*
   02
@@ -27,11 +28,26 @@ class Rabbit extends Animal {
     funcione.
 */
 
-// const counter = new Counter()
+class Counter {
+  constructor() {
+    this.value = 0;
+  }
 
-// counter.getValue()
-// counter.increment()
-// counter.getValue()
+  getValue() {
+    console.log(this.value);
+    return this.value;
+  }
+
+  increment() {
+    return this.value++;
+  }
+}
+
+const counter = new Counter();
+
+// counter.getValue();
+// counter.increment();
+// counter.getValue();
 
 /*
   03
@@ -41,14 +57,9 @@ class Rabbit extends Animal {
   - Não invoque o construtor.
 */
 
-const values = [
-  0,
-  {},
-  '',
-  [],
-  NaN,
-  () => {}
-]
+const values = [0, {}, "", [], NaN, () => {}];
+const newValues = values.filter(Boolean);
+// console.log(newValues);
 
 /*
   04
@@ -60,64 +71,62 @@ const values = [
     funcione.
 */
 
-// class Clock {
-//   constructor ({ template }) {
-//     this.template = template
-//   }
+class Clock {
+  constructor({ template }) {
+    this.template = template;
+  }
 
-//   render () {
-//     const date = new Date()
-//     let hours = date.getHours()
-//     let minutes = date.getMonth()
-//     let seconds = date.getSeconds()
+  render() {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMonth();
+    let seconds = date.getSeconds();
 
-//     if (hours < 10) {
-//       hours = `0${hours}`
-//     }
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
 
-//     if (minutes < 10) {
-//       minutes = `0${minutes}`
-//     }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
 
-//     if (seconds < 10) {
-//       seconds = `0${seconds}`
-//     }
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
 
-//     const formattedTime = this.template
-//       .replace('h', hours)
-//       .replace('m', minutes)
-//       .replace('s', seconds)
+    const formattedTime = this.template
+      .replace("h", hours)
+      .replace("m", minutes)
+      .replace("s", seconds);
 
-//     console.log(formattedTime)
-//   }
+    console.log(formattedTime);
+  }
 
-//   start () {
-//     this.render()
-//     this.timer = setInterval(() => this.render(), 1000)
-//   }
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), 1000);
+  }
 
-//   stop () {
-//     clearInterval(this.timer)
-//   }
-// }
+  stop() {
+    clearInterval(this.timer);
+  }
+}
 
-// class ExtendedClock extends Clock {
-//   constructor ({ options }) {
-//     super(options)
-    
-//     let { precision = 1000 } = options
-//     this.precision = precision
-//   }
+class ExtendedClock extends Clock {
+  constructor({ template, precision = 1000 }) {
+    super({ template });
+    this.precision = precision;
+  }
 
-//   start () {
-//     this.render()
-//     this.timer = setInterval(() => this.render(), this.precision)
-//   }
-// }
+  start() {
+    this.render();
+    this.timer = setInterval(() => this.render(), this.precision);
+  }
+}
 
-// const clock = ExtendedClock({ template: 'h:m:s', precision: 1000 })
+const clock = new ExtendedClock({ template: "h:m:s", precision: 1000 });
 
-// clock.start()
+// clock.start();
 
 /*
   05
@@ -127,7 +136,12 @@ const values = [
     caracteres que o textarea contém.
 */
 
+const textareaElement = document.querySelector('[data-js="textarea"]');
+const paragraphElement = document.querySelector('[data-js="paragraph"]');
 
+textareaElement.addEventListener("input", () => {
+  paragraphElement.textContent = textareaElement.value.length;
+});
 
 /*
   06
@@ -155,3 +169,28 @@ const values = [
     vídeo de correção dos exercícios um link para a aula de introdução ao 
     reduce e um link para a documentação do método no MDN.
 */
+
+function reduce(items, callback, initialValue) {
+  let accumulate = initialValue;
+  for (let i = 0; i < items.length; i++) {
+    const current = items[i];
+    accumulate = callback(accumulate, current, i, items);
+  }
+  return accumulate;
+}
+
+console.log(reduce([1, 2, 3], (acc, item) => acc + item, 0)); // 6;
+console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0)); // 9;
+console.log(
+  reduce(
+    [1, 2],
+    (acc, item) => {
+      acc["number-" + item] = item;
+      return acc;
+    },
+    {}
+  )
+); // {"number-1": 1, "number-2": 2};
+
+console.log(reduce([1, 2], (acc, item, index) => acc + index, 0)); // 1;
+console.log(reduce([1, 2], (acc, item, index, array) => acc + array[index], 0)); // 3;
