@@ -78,26 +78,18 @@ class Clock {
 
   render() {
     const date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMonth();
-    let seconds = date.getSeconds();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
 
-    if (hours < 10) {
-      hours = `0${hours}`;
-    }
-
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
-    }
+    const formattedHours = String(hours).padStart(2, "0");
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(seconds).padStart(2, "0");
 
     const formattedTime = this.template
-      .replace("h", hours)
-      .replace("m", minutes)
-      .replace("s", seconds);
+      .replace("h", formattedHours)
+      .replace("m", formattedMinutes)
+      .replace("s", formattedSeconds);
 
     console.log(formattedTime);
   }
@@ -126,7 +118,7 @@ class ExtendedClock extends Clock {
 
 const clock = new ExtendedClock({ template: "h:m:s", precision: 1000 });
 
-// clock.start();
+clock.start();
 
 /*
   05
