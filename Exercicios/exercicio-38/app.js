@@ -10,7 +10,51 @@
   - Teste o método getColor do prototype dos carros.
 */
 
+// function Car(color) {
+//   this.color = color;
+// }
 
+// Car.prototype.getColor = function getColor() {
+//   return this.color;
+// };
+
+// const car1 = new Car("Preto");
+// const car2 = new Car("Branco");
+// console.log(car1);
+// console.log(car2);
+
+// class Car {
+//   color = null;
+
+//   constructor(color) {
+//     this.color = color;
+//   }
+
+//   getColor() {
+//     return this.color;
+//   }
+// }
+
+// const car1 = new Car("Preto");
+// const car2 = new Car("Branco");
+// console.log(car1);
+// console.log(car2.getColor());
+
+// const car = {
+//   color: null,
+//   getColor() {
+//     return this.color;
+//   },
+// };
+
+// const car1 = Object.create(car);
+// const car2 = Object.create(car);
+
+// car1.color = "Preto";
+// car2.color = "Branco";
+
+// console.log(car1.getColor());
+// console.log(car2.getColor());
 
 /*
   02
@@ -25,16 +69,16 @@
 */
 
 const movie = {
-  title: 'Forrest Gump',
-  director: 'Robert Zemeckis',
-  starringRole: 'Tom Hanks'
+  title: "Forrest Gump",
+  director: "Robert Zemeckis",
+  starringRole: "Tom Hanks",
+};
+
+function getSummary() {
+  return `${this.title} foi dirigido por ${this.director} e tem ${this.starringRole} no papel principal.`;
 }
 
-function getSummary () {
-  return `${this.title} foi dirigido por ${this.director} e tem ${this.starringRole} no papel principal.`
-}
-
-console.log(getSummary())
+console.log(getSummary.call(movie));
 
 /*
   03
@@ -48,15 +92,20 @@ console.log(getSummary())
   - Descomente o código e crie a função.
 */
 
-/*
+function arrayToObj(array) {
+  return array.reduce((obj, [key, value]) => {
+    obj[key] = value;
+    return obj;
+  }, {});
+}
+
 console.log(
   arrayToObj([
-    ['prop1', 'value1'], 
-    ['prop2', 'value2'],
-    ['prop3', 'value3']
+    ["prop1", "value1"],
+    ["prop2", "value2"],
+    ["prop3", "value3"],
   ])
-)
-*/
+);
 
 /*
   04
@@ -64,67 +113,61 @@ console.log(
   - Refatore as classes abaixo para factory functions.
 */
 
-const formatTimeUnits = units => units
-  .map(unit => unit < 10 ? `0${unit}` : unit)
+const formatTimeUnits = (units) =>
+  units.map((unit) => (unit < 10 ? `0${unit}` : unit));
 
 const getTime = () => {
-  const date = new Date()
-  const hours = date.getHours()
-  const minutes = date.getMinutes()
-  const seconds = date.getSeconds()
+  const date = new Date();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
 
-  return [hours, minutes, seconds]
-}
+  return [hours, minutes, seconds];
+};
 
-const getFormattedTime = template => {
-  const [hours, minutes, seconds] = getTime()
-  const formattedTime = formatTimeUnits([hours, minutes, seconds])
+const getFormattedTime = (template) => {
+  const [hours, minutes, seconds] = getTime();
+  const formattedTime = formatTimeUnits([hours, minutes, seconds]);
 
   return template
-    .split(':')
+    .split(":")
     .map((_, index) => formattedTime[index])
-    .join(':')
+    .join(":");
+};
+
+function clock({ template }) {
+  return {
+    template,
+    render() {
+      const formattedTime = getFormattedTime(this.template);
+      console.log(formattedTime);
+    },
+    start() {
+      const oneSecond = 1000;
+      this.render();
+      this.timer = setInterval(() => this.render(), oneSecond);
+    },
+    stop() {
+      clearInterval(this.timer);
+    },
+  };
 }
 
-class Clock {
-  constructor ({ template }) {
-    this.template = template
-  }
-
-  render () {
-    const formattedTime = getFormattedTime(this.template)
-    console.log(formattedTime)
-  }
-
-  start () {
-    const oneSecond = 1000
-
-    this.render()
-    this.timer = setInterval(() => this.render(), oneSecond)
-  }
-
-  stop () {
-    clearInterval(this.timer)
-  }
+function extendedClock({ template, precision = 1000 }) {
+  return {
+    template,
+    precision,
+    ...clock({ template }),
+    start() {
+      this.render();
+      this.timer = setInterval(() => this.render(), this.precision);
+    },
+  };
 }
 
-class ExtendedClock extends Clock {
-  constructor (options) {
-    super(options)
-    
-    const { precision = 1000 } = options
-    this.precision = precision
-  }
-
-  start () {
-    this.render()
-    this.timer = setInterval(() => this.render(), this.precision)
-  }
-}
-
-const clock = new ExtendedClock({ template: 'h:m:s', precision: 1000 })
-
-// clock.start()
+const c = extendedClock({ template: "h:m:s", precision: 1000 });
+c.start();
+c.stop();
 
 /*
   05
@@ -165,7 +208,28 @@ const clock = new ExtendedClock({ template: 'h:m:s', precision: 1000 })
         - download, com o valor 'table.csv'.
 */
 
+const appendFileDownload = (content, name) => {
+  btnDownload.href = `data:text/csvcharset=utf-8,${content}`;
+  btnDownload.download = name;
+};
 
+const getLineCellContent = (line) => line.textContent;
+const concatContentCSV = (tableLine) => {
+  const lineCells = Array.from(tableLine.cells);
+  const contentLines = lineCells.map(getLineCellContent);
+  return contentLines.join(",");
+};
+
+const handleClickBtnDownload = () => {
+  const concatContent = tableLines.map(concatContentCSV).join("\n");
+  const encodeConcatContentCSV = encodeURIComponent(concatContent);
+  appendFileDownload(encodeConcatContentCSV, "table.csv");
+};
+
+const table = document.querySelector('[data-js="table"]');
+const tableLines = Array.from(table.querySelectorAll("tr"));
+const btnDownload = document.querySelector('[data-js="export-table-btn"]');
+btnDownload.addEventListener("click", handleClickBtnDownload);
 
 /*
   06
@@ -179,8 +243,6 @@ const clock = new ExtendedClock({ template: 'h:m:s', precision: 1000 })
   - O procedimento é o mesmo mostrado nas aulas da etapa em que construímos essa
     aplicação.
 */
-
-
 
 /*
   07
